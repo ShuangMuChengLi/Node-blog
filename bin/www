@@ -3,12 +3,20 @@
 /**
  * Module dependencies.
  */
-
+try {
+    require("fs").mkdirSync("./log");
+} catch (e) {
+    if (e.code !== "EEXIST") {
+        console.error("Could not set up log directory, error was: ", e);
+        process.exit(1);
+    }
+}
 let app = require("../app");
 let open = require("open");
 let debug = require("debug")("blog:server");
 let http = require("http");
-
+let log4js = require("log4js");
+log4js.configure("./config/log4js.json");
 /**
  * Get port from environment and store in Express.
  */
