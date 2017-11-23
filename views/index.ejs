@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
+    <title>林超群博客</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
@@ -11,29 +11,47 @@
     <div class="main">
         <div class="main-inner">
             <ul class="list-ul">
+                <% list.forEach(function(row){%>
                 <li class="list-li">
                     <h2 class="list-h2">
-                        <a href="/html/cms/content.jsp?menu=NodeModule&amp;id=1480081169735">
-                            <i class="icon-link"></i> socket.io 中文案例文档   (官方socket.io聊天应用demo翻译) </a>
+                        <a href="/html/cms/content.jsp?menu=<%= menu%>&id=<%= row.id%>">
+                            <i class="icon-link"></i> <%- row.title%> </a>
                     </h2>
                     <div class="list-info clearfix">
                         <p class="list-p">
-                            socket.io中文文档
+                            <%- row.description%>
                         </p>
-                        <a href="" class="fr">阅读全文</a>
+                        <a href="/html/cms/content.jsp?menu=<%= menu%>&id=<%= row.id%>" class="fr">阅读全文</a>
                     </div>
                 </li>
+                <% })%>
             </ul>
             <ul class="pagination">
-                <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a class="active" href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">7</a></li>
-                <li><a href="#">»</a></li>
+                <% if(pageInfo.prev) {%>
+                    <li><a href="/<%=menu%>/<%=pageInfo.prev%>/<%=pageInfo.pageSize%>">«</a></li>
+                <% }else {%>
+                    <li><a href="javascript:void(0)">«</a></li>
+                <% }%>
+                <% for(var i = 1; i <= pageInfo.pageCount;i++){%>
+                    <li>
+                        <a
+                            class="<%= pageInfo.now === i ? 'active':""%>"
+                            href="/<%=menu%>/<%= i%>/<%=pageInfo.pageSize%>">
+                            <%= i %>
+                        </a>
+                    </li>
+                <% }%>
+                <!--<li><a class="active" href="#">2</a></li>-->
+                <!--<li><a href="#">3</a></li>-->
+                <!--<li><a href="#">4</a></li>-->
+                <!--<li><a href="#">5</a></li>-->
+                <!--<li><a href="#">6</a></li>-->
+                <!--<li><a href="#">7</a></li>-->
+                <% if(pageInfo.next) {%>
+                    <li><a href="/<%=menu%>/<%=pageInfo.next%>/<%=pageInfo.pageSize%>">»</a></li>
+                <% }else {%>
+                    <li><a href="javascript:void(0)">»</a></li>
+                <% }%>
             </ul>
         </div>
     </div>

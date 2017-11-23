@@ -1,62 +1,94 @@
 const log4js = require("log4js");
 const log = log4js.getLogger("app");
 let db = require("../config/db");
-exports.add = function(req,res){
-    db.getConnection(function(err, connection) {
-        if (err) {
-            log.error(err);
-            return;
-        }
-        connection.query(
-            "INSERT INTO user (user , password) VALUES (?,?)",
-            ["user" , "password"],
-            function(err){
-                connection.release();
-                if (err) throw err;
-                res.end("added");
+/**
+ * 获取列表
+ * @param arg
+ * @returns {Promise}
+ */
+exports.selectList = function (arg) {
+    let promise = new Promise((resolve, reject) => {
+        let sSql = "";
+        let selectArg = [];
+        let begin = arg.begin ? arg.begin : 1;
+        let count = arg.count ? arg.count : 10;
+        let menu = arg.menu;
+        if (arg) {
+            if (menu === "index") {
+                sSql = "SELECT * FROM  cms where isindex=1 and del!=1 limit ?,?";
+                selectArg = [begin, count];
+            } else {
+                sSql = "SELECT id,title,keyword,description,date,menu FROM  cms where del!=1 and menu=? limit ?,?";
+                selectArg = [menu, begin, count];
             }
-        );
-    });
-};
-exports.update = function(req,res){
-    db.getConnection(function(err, connection) {
-        if (err) {
-            log.error(err);
-            return;
         }
-        connection.query(
-            "UPDATE  user SET password='newpassword' WHERE user=?",
-            ["user"],
-            function(err){
-                connection.release();
-                if (err) throw err;
-                res.end("update");
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
             }
-        );
+            connection.query(
+                sSql,
+                selectArg,
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(rows);
+                }
+            );
+        });
     });
+    return promise;
 };
-exports.delete = function(req,res){
-    db.getConnection(function(err, connection) {
-        if (err) {
-            log.error(err);
-            return;
+/**
+ * 获取列表总个数
+ * @param arg
+ * @returns {Promise}
+ */
+exports.selectListTotal = function (arg) {
+    let promise = new Promise((resolve, reject) => {
+        let selectArg = [];
+        let sSql = "";
+        let menu = arg.menu;
+        if (arg) {
+            if (menu === "index") {
+                sSql = "SELECT count(*) AS total FROM  cms where isindex=1 and del!=1 ";
+            } else {
+                sSql = "SELECT count(*) AS total  FROM  cms where del!=1 and menu=? ";
+                selectArg = [arg.menu];
+            }
         }
-        connection.query(
-            "DELETE FROM  user  WHERE user=?",
-            ["user"],
-            function(err){
-                connection.release();
-                if (err) throw err;
-                res.end("delete");
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
             }
-        );
+            connection.query(
+                sSql,
+                selectArg,
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(rows[0].total);
+                }
+            );
+        });
     });
+    return promise;
 };
-exports.selectList = function (req,res,fn){
-    let sUrl = req.url;
-    let sMenu = sUrl.split("/")[1];
-    let sSql = "SELECT * FROM  cms where del!=1 and menu='" + sMenu + "'";
-    db.getConnection(function(err, connection) {
+exports.selectIndexList = function (req, res, fn) {
+    let sSql = "SELECT * FROM  cms where isindex=1 and del!=1";
+    db.getConnection(function (err, connection) {
         if (err) {
             log.error(err);
             return;
@@ -64,7 +96,7 @@ exports.selectList = function (req,res,fn){
         connection.query(
             sSql,
             [],
-            function(err , rows){
+            function (err, rows) {
                 connection.release();
                 if (err) throw err;
                 fn(rows);
@@ -72,27 +104,9 @@ exports.selectList = function (req,res,fn){
         );
     });
 };
-exports.selectIndexList = function (req,res,fn){
-    sSql = "SELECT * FROM  cms where isindex=1 and del!=1";
-    db.getConnection(function(err, connection) {
-        if (err) {
-            log.error(err);
-            return;
-        }
-        connection.query(
-            sSql,
-            [],
-            function(err , rows){
-                connection.release();
-                if (err) throw err;
-                fn(rows);
-            }
-        );
-    });
-};
-exports.select = function (req,res,id,fn){
+exports.select = function (req, res, id, fn) {
     let sSql = "SELECT * FROM  cms where del!=1 and id='" + id + "'";
-    db.getConnection(function(err, connection) {
+    db.getConnection(function (err, connection) {
         if (err) {
             log.error(err);
             return;
@@ -100,7 +114,7 @@ exports.select = function (req,res,id,fn){
         connection.query(
             sSql,
             [],
-            function(err , rows){
+            function (err, rows) {
                 connection.release();
                 if (err) throw err;
                 fn(rows);
@@ -108,9 +122,9 @@ exports.select = function (req,res,id,fn){
         );
     });
 };
-exports.search = function (req,res,keyword,fn){
+exports.search = function (req, res, keyword, fn) {
     let sSql = "SELECT * FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%')";
-    db.getConnection(function(err, connection) {
+    db.getConnection(function (err, connection) {
         if (err) {
             log.error(err);
             return;
@@ -118,7 +132,7 @@ exports.search = function (req,res,keyword,fn){
         connection.query(
             sSql,
             [],
-            function(err , rows){
+            function (err, rows) {
                 connection.release();
                 if (err) throw err;
                 fn(rows);
