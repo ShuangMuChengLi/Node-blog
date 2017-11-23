@@ -86,41 +86,31 @@ exports.selectListTotal = function (arg) {
     });
     return promise;
 };
-exports.selectIndexList = function (req, res, fn) {
-    let sSql = "SELECT * FROM  cms where isindex=1 and del!=1";
-    db.getConnection(function (err, connection) {
-        if (err) {
-            log.error(err);
-            return;
-        }
-        connection.query(
-            sSql,
-            [],
-            function (err, rows) {
-                connection.release();
-                if (err) throw err;
-                fn(rows);
+exports.getContent = function (id) {
+    let promise = new Promise((resolve, reject) => {
+        let sSql = "SELECT * FROM  cms where del!=1 and id=?";
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
             }
-        );
+            connection.query(
+                sSql,
+                [id],
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(rows[0]);
+                }
+            );
+        });
     });
-};
-exports.select = function (req, res, id, fn) {
-    let sSql = "SELECT * FROM  cms where del!=1 and id='" + id + "'";
-    db.getConnection(function (err, connection) {
-        if (err) {
-            log.error(err);
-            return;
-        }
-        connection.query(
-            sSql,
-            [],
-            function (err, rows) {
-                connection.release();
-                if (err) throw err;
-                fn(rows);
-            }
-        );
-    });
+    return promise;
 };
 exports.search = function (req, res, keyword, fn) {
     let sSql = "SELECT * FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%')";

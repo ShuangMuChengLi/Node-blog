@@ -29,4 +29,14 @@ describe("selectList", function() {
             done();
         });
     });
+    it("getContent", function(done) {
+        const cms = require("../../../dao/cms");
+        cms.getContent("1509528630774").then((data)=>{
+            console.log(data);
+            done();
+        },(err)=>{
+            console.log(err);
+            done();
+        });
+    });
 });

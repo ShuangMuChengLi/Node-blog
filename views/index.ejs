@@ -28,7 +28,7 @@
             </ul>
             <ul class="pagination">
                 <% if(pageInfo.prev) {%>
-                    <li><a href="/<%=menu%>/<%=pageInfo.prev%>/<%=pageInfo.pageSize%>">«</a></li>
+                    <li><a href="/list/<%=menu%>/<%=pageInfo.prev%>/<%=pageInfo.pageSize%>">«</a></li>
                 <% }else {%>
                     <li><a href="javascript:void(0)">«</a></li>
                 <% }%>
@@ -36,7 +36,7 @@
                     <li>
                         <a
                             class="<%= pageInfo.now === i ? 'active':""%>"
-                            href="/<%=menu%>/<%= i%>/<%=pageInfo.pageSize%>">
+                            href="/list/<%=menu%>/<%= i%>/<%=pageInfo.pageSize%>">
                             <%= i %>
                         </a>
                     </li>
@@ -48,7 +48,7 @@
                 <!--<li><a href="#">6</a></li>-->
                 <!--<li><a href="#">7</a></li>-->
                 <% if(pageInfo.next) {%>
-                    <li><a href="/<%=menu%>/<%=pageInfo.next%>/<%=pageInfo.pageSize%>">»</a></li>
+                    <li><a href="/list/<%=menu%>/<%=pageInfo.next%>/<%=pageInfo.pageSize%>">»</a></li>
                 <% }else {%>
                     <li><a href="javascript:void(0)">»</a></li>
                 <% }%>

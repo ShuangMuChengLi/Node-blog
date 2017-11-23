@@ -1,109 +1,11 @@
 <div class="pagemenu">
     <ul class="pagemenu-ul">
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
-        <li class="pagemenu-li">
-            <a class="pagemenu-a" href="/">
-                首页
-            </a>
-        </li>
+        <% for(var i=0;i<menuList.length ; i++){%>
+            <li class="<%= menu === menuList[i].id ? "pagemenu-li active":"pagemenu-li"%>">
+                <a class="pagemenu-a" href="/list/<%=menuList[i].id%>/1/10">
+                    <%= menuList[i].title%>
+                </a>
+            </li>
+        <%}%>
     </ul>
 </div>

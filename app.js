@@ -30,6 +30,10 @@ app.use("/", index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+    if(req.headers.accept.match("image")){
+        next();
+        return;
+    }
     let err = new Error("Not Found");
     err.status = 404;
     next(err);
