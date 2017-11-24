@@ -9,6 +9,9 @@ let lessMiddleware = require("less-middleware");
 
 let index = require("./routes/index");
 let content = require("./routes/content");
+let cms = require("./routes/cms");
+let ueditor = require("./routes/ueditor-route");
+let submitCms = require("./routes/cms-form");
 
 let app = express();
 
@@ -24,8 +27,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "upload")));
+app.use(express.static(path.join(__dirname, "ueditor")));
 
 app.use("/html/cms", content);
+app.use("/submitCms", submitCms);
+app.use("/ueditor/ue", ueditor);
+app.use("/cms", cms);
 app.use("/", index);
 
 // catch 404 and forward to error handler
@@ -43,6 +51,20 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     log.error("Something went wrong:", err);
     console.error("Something went wrong:", err);
+    // set locals, only providing error in development
+    // res.locals.message = err.message;
+    // res.locals.error = req.app.get("env") === "development" ? err : {};
+    //
+    // // render the error page
+    // res.status(err.status || 500);
+    // res.render("error");
+    res.writeHead(200, {"Content-Type": "application/json;charset=utf-8"});
+    console.info(err);
+    let resule = {
+        status:err.code,
+        msg:err.message,
+    };
+    res.end(JSON.stringify(resule));
 });
 
 module.exports = app;

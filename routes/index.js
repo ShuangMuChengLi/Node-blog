@@ -10,6 +10,7 @@ async function getList(req, res, next) {
     params.page = params.page?  parseInt(params.page) : 1;
     params.size = params.size? parseInt(params.size) : 8;
     params.menu = params.menu?  params.menu : "index";
+    params.keyword = params.keyword?  params.keyword : "";
     let begin = (params.page - 1) * params.size;
     let arg = {
         begin : begin,
