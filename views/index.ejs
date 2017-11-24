@@ -27,30 +27,21 @@
                 <% })%>
             </ul>
             <ul class="pagination">
+                <% var keywordPath = keyword ? "/" + keyword : ""%>
                 <% if(pageInfo.prev) {%>
-                    <li><a href="/list/<%=menu%>/<%=pageInfo.prev%>/<%=pageInfo.pageSize%>">«</a></li>
-                <% }else {%>
-                    <li><a href="javascript:void(0)">«</a></li>
+                    <li><a href="/list/<%=menu%><%= keywordPath %>/<%=pageInfo.prev%>/<%=pageInfo.pageSize%>">«</a></li>
                 <% }%>
                 <% for(var i = 1; i <= pageInfo.pageCount;i++){%>
                     <li>
                         <a
                             class="<%= pageInfo.now === i ? 'active':""%>"
-                            href="/list/<%=menu%>/<%= i%>/<%=pageInfo.pageSize%>">
+                            href="/list/<%=menu%><%= keywordPath %>/<%= i%>/<%=pageInfo.pageSize%>">
                             <%= i %>
                         </a>
                     </li>
                 <% }%>
-                <!--<li><a class="active" href="#">2</a></li>-->
-                <!--<li><a href="#">3</a></li>-->
-                <!--<li><a href="#">4</a></li>-->
-                <!--<li><a href="#">5</a></li>-->
-                <!--<li><a href="#">6</a></li>-->
-                <!--<li><a href="#">7</a></li>-->
                 <% if(pageInfo.next) {%>
-                    <li><a href="/list/<%=menu%>/<%=pageInfo.next%>/<%=pageInfo.pageSize%>">»</a></li>
-                <% }else {%>
-                    <li><a href="javascript:void(0)">»</a></li>
+                    <li><a href="/list/<%=menu%><%= keywordPath %>/<%=pageInfo.next%>/<%=pageInfo.pageSize%>">»</a></li>
                 <% }%>
             </ul>
         </div>

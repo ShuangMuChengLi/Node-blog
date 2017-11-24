@@ -14,7 +14,8 @@ router.post("/", async function(routeReq, routeRes, next) {
     routeRes.writeHead(200, {"Content-Type": "application/json;charset=utf-8"});
     let respontData = {
         status:200,
-        msg:"操作成功"
+        msg:"操作成功",
+        data:result
     };
     let data = JSON.stringify(respontData);
     routeRes.end(data);

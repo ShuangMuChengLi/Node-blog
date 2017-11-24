@@ -8,8 +8,8 @@
             </h1>
         </div>
         <div class="search">
-            <form action="/search" method="post">
-                <input placeholder="搜索....">
+            <form action="javascript:void(0)">
+                <input id="searchBox" placeholder="搜索....">
             </form>
         </div>
     </div>
@@ -22,3 +22,12 @@
         </h2>
     </div>
 </div>
+<script>
+    document.getElementById("searchBox").onkeydown = function(e){
+        var theEvent = e || window.event;
+        var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+        if (code === 13) {
+            window.location.href = "/list/search/" + this.value + "/1/10";
+        }
+    };
+</script>

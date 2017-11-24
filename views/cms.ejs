@@ -23,8 +23,9 @@
                     </el-form-item>
                     <el-form-item label="菜单" prop="menu">
                         <el-select v-model="cms.menu" placeholder="菜单">
-                            <el-option label="区域一" value="shanghai"></el-option>
-                            <el-option label="区域二" value="beijing"></el-option>
+                            <% for(var i=0;i<menuList.length ; i++){%>
+                            <el-option label="<%= menuList[i].title%>" value="<%=menuList[i].id%>"></el-option>
+                            <%}%>
                         </el-select>
                     </el-form-item>
                     <el-form-item label="是否首页">
@@ -87,7 +88,10 @@
                         this.$http.post('/submitCms',this.cms).then(response => {
                             this.$message({
                                 message: '恭喜你，发布成功',
-                                type: 'success'
+                                type: 'success',
+                                onClose:()=>{
+                                    window.location.href = "/html/cms/content.jsp?menu=" + this.cms.menu + "&id=" + response.body.data;
+                                }
                             });
                         }, response => {
                             this.$message.error(response.msg);

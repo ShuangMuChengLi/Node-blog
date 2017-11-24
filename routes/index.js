@@ -15,7 +15,8 @@ async function getList(req, res, next) {
     let arg = {
         begin : begin,
         count:params.size,
-        menu:params.menu
+        menu:params.menu,
+        keyword:params.keyword,
     };
     let result = await parallel([
         function () {
@@ -58,11 +59,12 @@ async function getList(req, res, next) {
         next(err);
     });
     let pageInfo = page(result[1],params.page,params.size);
-    res.render("index", { list: result[0],menu:params.menu,pageInfo:pageInfo , menuList:result[2]});
+    res.render("index", { list: result[0],menu:params.menu, keyword:params.keyword  ,pageInfo:pageInfo , menuList:result[2]});
 }
 /* GET home page. */
 router.get("/", getList);
 /* GET home page. */
 router.get("/list/:menu/:page/:size", getList);
+router.get("/list/:menu/:keyword/:page/:size", getList);
 
 module.exports = router;

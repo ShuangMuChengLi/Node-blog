@@ -144,9 +144,10 @@ exports.insertContent = function (arg) {
                 reject(err);
                 return;
             }
+            let id = uuidV4();
             connection.query(
                 "INSERT INTO cms (id , title,keyword,description,content,menu,isindex,del,date) VALUES (?,?,?,?,?,?,?,?,?)",
-                [uuidV4(),arg.title,arg.keyword,arg.description,arg.content,arg.menu,arg.isindex,0,new Date()],
+                [id,arg.title,arg.keyword,arg.description,arg.content,arg.menu,arg.isindex,0,new Date()],
                 function (err, rows) {
                     connection.release();
                     if (err) {
@@ -154,7 +155,7 @@ exports.insertContent = function (arg) {
                         reject(err);
                         return;
                     }
-                    resolve(rows);
+                    resolve(id);
                 }
             );
         });
