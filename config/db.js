@@ -3,8 +3,8 @@
  */
 let mysql = require("mysql");
 module.exports =  mysql.createPool({
-    host:     "120.78.152.50",
-    user:     "lin",
-    password: "g7845120",
+    host:     "localhost",
+    user:     "xxx",
+    password: "xxx",
     database: "blog"
 });
