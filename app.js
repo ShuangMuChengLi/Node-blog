@@ -13,6 +13,7 @@ let cms = require("./routes/cms");
 let ueditor = require("./routes/ueditor-route");
 let submitCms = require("./routes/cms-form");
 let console = require("console");
+let compression = require("compression");
 let app = express();
 
 // view engine setup
@@ -20,7 +21,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 const log = log4js.getLogger("app");
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, "public", "index.ico")));
+app.use(compression());
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

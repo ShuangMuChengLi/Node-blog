@@ -1,7 +1,7 @@
 const log4js = require("log4js");
 const log = log4js.getLogger("app");
 let db = require("../config/db");
-const uuidV4 = require('uuid/v4')
+const uuidV4 = require("uuid/v4");
 /**
  * 获取列表
  * @param arg
@@ -11,7 +11,7 @@ exports.selectList = function (arg) {
     let promise = new Promise((resolve, reject) => {
         let sSql = "";
         let selectArg = [];
-        let begin = arg.begin ? parseInt(arg.begin) : 1;
+        let begin = arg.begin ? parseInt(arg.begin) - 1 : 0;
         let count = arg.count ? parseInt(arg.count) : 10;
         let menu = arg.menu;
         let keyword = arg.keyword;
@@ -30,6 +30,7 @@ exports.selectList = function (arg) {
             }
 
         }
+        console.log(sSql);
         db.getConnection(function (err, connection) {
             if (err) {
                 log.error(err);

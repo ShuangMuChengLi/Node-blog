@@ -2,7 +2,7 @@
     <ul class="pagemenu-ul">
         <% for(var i=0;i<menuList.length ; i++){%>
             <li class="<%= menu === menuList[i].id ? "pagemenu-li active":"pagemenu-li"%>">
-                <a class="pagemenu-a" href="/list/<%=menuList[i].id%>/1/10">
+                <a class="pagemenu-a" href="/list/<%=menuList[i].id%>/1/<%= (menuList[i].id === "index" || menuList[i].id === "search")? 50 : 10%>">
                     <%= menuList[i].title%>
                 </a>
             </li>

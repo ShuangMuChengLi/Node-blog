@@ -20,9 +20,9 @@ describe("cms", function() {
         const cms = require("../../../dao/cms");
         let info = {
             menu:"search",
-            begin:10,
+            begin:1,
             count:3,
-            keyword:"js"
+            keyword:"gzip"
         };
         cms.selectList(info).then((data)=>{
             console.log(data);
