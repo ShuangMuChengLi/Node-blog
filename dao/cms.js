@@ -11,8 +11,8 @@ exports.selectList = function (arg) {
     let promise = new Promise((resolve, reject) => {
         let sSql = "";
         let selectArg = [];
-        let begin = arg.begin ? arg.begin : 1;
-        let count = arg.count ? arg.count : 10;
+        let begin = arg.begin ? parseInt(arg.begin) : 1;
+        let count = arg.count ? parseInt(arg.count) : 10;
         let menu = arg.menu;
         let keyword = arg.keyword;
         if (arg) {
@@ -24,7 +24,7 @@ exports.selectList = function (arg) {
                     sSql = "SELECT id,title,keyword,description,date,menu FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY date DESC,isindex DESC limit ?,?";
                     selectArg = [begin, count];
                 }else{
-                    sSql = "SELECT id,title,keyword,description,date,menu FROM  cms where del!=1 and menu=? ORDER BY date DESC ,isindex DESC limit ?,? ";
+                    sSql = "SELECT id,title,keyword,description,date,menu FROM  cms where del!=1 and menu=? ORDER BY date DESC ,isindex DESC limit ?,?";
                     selectArg = [menu, begin, count];
                 }
             }
@@ -156,6 +156,75 @@ exports.insertContent = function (arg) {
                         return;
                     }
                     resolve(id);
+                }
+            );
+        });
+    });
+    return promise;
+};
+/**
+ *
+ * @param arg
+ * arg = {
+ *          id:"",
+            title:"标题",
+            keyword :"关键字",
+            description :"描述",
+            content :"内容",
+            menu :"菜单",
+            isindex : "1"
+        };
+ * @returns {Promise}
+ */
+exports.updateContent = function (arg) {
+    let promise = new Promise((resolve, reject) => {
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
+            }
+            connection.query(
+                "UPDATE cms SET  title=?,keyword=?,description=?,content=?,menu=?,isindex=? WHERE id=?",
+                [arg.title,arg.keyword,arg.description,arg.content,arg.menu,arg.isindex,arg.id],
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(arg.id);
+                }
+            );
+        });
+    });
+    return promise;
+};
+/**
+ *
+ * @param id
+ * @returns {Promise}
+ */
+exports.delContent = function (id) {
+    let promise = new Promise((resolve, reject) => {
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
+            }
+            connection.query(
+                "UPDATE cms SET  del=1 WHERE id=?",
+                [id],
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(true);
                 }
             );
         });

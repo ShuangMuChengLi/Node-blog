@@ -38,6 +38,7 @@
                 </div>
 
                 <p class="cms-submit">
+                    <button @click="del">删除</button>
                     <button @click="submitCms">提交</button>
                 </p>
             </div>
@@ -53,10 +54,13 @@
 <script src="/ueditor/ueditor.all.js"></script>
 <script>
     var ue = UE.getEditor('editor',{'autoHeightEnabled': false});
+    var id = "<%= id%>";
+
     new Vue({
         el: '#app',
         data: {
             cms: {
+                id:id,
                 title:"",
                 keyword:"",
                 description:"",
@@ -79,13 +83,28 @@
                 ]
             }
         },
+        mounted(){
+            if (id) {
+                ue.addListener("ready", () => {
+                    this.getEditContent();
+                });
+            }
+        },
         methods:{
+            getEditContent(){
+                this.$http.get('/cms/content/' + id).then(response => {
+                    this.cms = response.body.data;
+                    ue.setContent(this.cms.content);
+                }, response => {
+                    this.$message.error(response.body.msg);
+                });
+            },
             submitCms(){
                 this.$refs.cms.validate((valid)=>{
                     if (valid) {
                         this.cms.content = ue.getContent();
                         // GET /someUrl
-                        this.$http.post('/submitCms',this.cms).then(response => {
+                        this.$http.post('/cmsForm/addOrUpdate',this.cms).then(response => {
                             this.$message({
                                 message: '恭喜你，发布成功',
                                 type: 'success',
@@ -94,14 +113,31 @@
                                 }
                             });
                         }, response => {
-                            this.$message.error(response.msg);
+                            this.$message.error(response.body.msg);
                         });
                     } else {
                         window.scrollTo(0,0);
                         return false;
                     }
                 })
-
+            },
+            del(){
+                // GET /someUrl
+                this.$http.post('/cmsForm/del',{id:this.cms.id}).then(response => {
+                    if(response.body.code && response.body.code === 200){
+                        this.$message({
+                            message: '恭喜你，删除成功',
+                            type: 'success',
+                            onClose:()=>{
+                                window.location.href = "/list/" + this.cms.menu;
+                            }
+                        });
+                    }else{
+                        this.$message.error(response.body.msg);
+                    }
+                }, response => {
+                    this.$message.error(response.body.msg);
+                });
             }
         }
     })

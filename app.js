@@ -12,7 +12,7 @@ let content = require("./routes/content");
 let cms = require("./routes/cms");
 let ueditor = require("./routes/ueditor-route");
 let submitCms = require("./routes/cms-form");
-
+let console = require("console");
 let app = express();
 
 // view engine setup
@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, "upload")));
 app.use(express.static(path.join(__dirname, "ueditor")));
 
 app.use("/html/cms", content);
-app.use("/submitCms", submitCms);
+app.use("/cmsForm", submitCms);
 app.use("/ueditor/ue", ueditor);
 app.use("/cms", cms);
 app.use("/", index);

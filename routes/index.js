@@ -8,8 +8,15 @@ let menuCache = require("../cache/menu");
 async function getList(req, res, next) {
     let params = req.params;
     params.page = params.page?  parseInt(params.page) : 1;
-    params.size = params.size? parseInt(params.size) : 8;
     params.menu = params.menu?  params.menu : "index";
+    if(!params.size){
+        if(params.menu === "search" || params.menu === "index"){
+            params.size = 50;
+        }else{
+            params.size = 10;
+        }
+    }
+
     params.keyword = params.keyword?  params.keyword : "";
     let begin = (params.page - 1) * params.size;
     let arg = {
@@ -66,5 +73,5 @@ router.get("/", getList);
 /* GET home page. */
 router.get("/list/:menu/:page/:size", getList);
 router.get("/list/:menu/:keyword/:page/:size", getList);
-
+router.get("/list/:menu", getList);
 module.exports = router;
