@@ -1,7 +1,7 @@
 const assert = require("chai").assert;
 describe("cms", function() {
     it("selectList", function(done) {
-        const cms = require("../../../dao/cms");
+        const cms = require("../../dao/cms");
         let info = {
             menu:"js",
             begin:10,
@@ -17,7 +17,7 @@ describe("cms", function() {
         });
     });
     it("searchList", function(done) {
-        const cms = require("../../../dao/cms");
+        const cms = require("../../dao/cms");
         let info = {
             menu:"search",
             begin:1,
@@ -33,7 +33,7 @@ describe("cms", function() {
         });
     });
     it("total", function(done) {
-        const cms = require("../../../dao/cms");
+        const cms = require("../../dao/cms");
         let info = {
             menu:"index"
         };
@@ -46,7 +46,7 @@ describe("cms", function() {
         });
     });
     it("search-total", function(done) {
-        const cms = require("../../../dao/cms");
+        const cms = require("../../dao/cms");
         let info = {
             menu:"search",
             keyword:"js"
@@ -60,7 +60,7 @@ describe("cms", function() {
         });
     });
     it("getContent", function(done) {
-        const cms = require("../../../dao/cms");
+        const cms = require("../../dao/cms");
         cms.getContent("1509528630774").then((data)=>{
             console.log(data);
             done();
@@ -70,7 +70,7 @@ describe("cms", function() {
         });
     });
     it("insertContent", function(done) {
-        const cms = require("../../../dao/cms");
+        const cms = require("../../dao/cms");
         let arg = {
             title:"标题",
             keyword :"关键字",
