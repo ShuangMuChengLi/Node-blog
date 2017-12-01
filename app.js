@@ -10,6 +10,7 @@ let lessMiddleware = require("less-middleware");
 let index = require("./routes/index");
 let content = require("./routes/content");
 let cms = require("./routes/cms");
+let comment = require("./routes/comment");
 let ueditor = require("./routes/ueditor-route");
 let submitCms = require("./routes/cms-form");
 let console = require("console");
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, "ueditor")));
 
 app.use("/html/cms", content);
 app.use("/cmsForm", submitCms);
+app.use("/comment", comment);
 app.use("/ueditor/ue", ueditor);
 app.use("/cms", cms);
 app.use("/", index);

@@ -26,20 +26,43 @@
                    评论区
                 </h2>
                 <div class="input-wrap ">
-                    <div class="faceContent" v-show="faceListVisible">
-                        <ul class="clearfix">
-                            <li v-for="item in 104" @click="faceSelect(item)">
-                                <img :src="'/images/face/faceIcon/' + item + '.png'">
-                            </li>
-                        </ul>
+                        <% for(var i = 0; i < comment.length;i++){%>
+                            <el-card :body-style="{ padding: '0px' }" style="padding: 14px;">
+                                <p class="author-title-p">
+                                    <span><%=comment[i].nickname%></span>
+                                    <span class="comment-date"><%=comment[i].date%></span>
+                                </p>
+                                <p><%-comment[i].comment%></p>
+                            </el-card>
+                        <% }%>
+                    <div class="comment-form">
+                        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                            <el-form-item label="昵称" prop="nickname">
+                                <el-input v-model="ruleForm.nickname"></el-input>
+                            </el-form-item>
+                            <el-form-item label="联系方式" prop="tel">
+                                <el-input v-model="ruleForm.tel"></el-input>
+                            </el-form-item>
+                        </el-form>
+                        <div class="pr">
+                            <div class="faceContent" v-show="faceListVisible">
+                                <ul class="clearfix">
+                                    <li v-for="item in 104" @click="faceSelect(item)">
+                                        <img :src="'/images/face/faceIcon/' + item + '.png'">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tool">
+                                <a href="javascript:void(0)" id="faceIcon" @click="faceListVisible = !faceListVisible">
+                                    <img src="/images/face.png">
+                                </a>
+                            </div>
+                            <div contenteditable="true" class="input" v-html="inputMsg" ref="editor">  </div>
+                            <div class="submit" @click="submitMsg">发送</div>
+                        </div>
                     </div>
-                    <div class="tool">
-                        <a href="javascript:void(0)" id="faceIcon" @click="faceListVisible = !faceListVisible">
-                            <img src="/images/face.png">
-                        </a>
-                    </div>
-                    <div contenteditable="true" class="input" v-html="inputMsg" ref="editor">  </div>
-                    <div class="submit" @click="submitMsg">发送</div>
+
+
                 </div>
             </div>
         </div>
@@ -54,11 +77,23 @@
 <!--<script src="https://unpkg.com/element-ui@2.0.5/lib/index.js"></script>-->
 <script src="/javascripts/element-ui.js"></script>
 <script>
+    let pid = "<%=id%>";
     new Vue( {
         el: '#app',
         data :{
             faceListVisible:false,
             inputMsg:"",
+            ruleForm:{
+                nickname:"",
+                tel :"",
+                comment :"",
+                pid :""
+            },
+            rules: {
+                nickname: [
+                    {required: true, message: '请输入昵称', trigger: 'blur'}
+                ]
+            }
         },
         mounted: function () {
         },
@@ -88,11 +123,37 @@
             },
             // 发送文本
             submitMsg(){
-                let emitObj = {
-                    msg:this.$refs.editor.innerHTML,
-                    type:"text"
-                };
-                this.$refs.editor.innerHTML = "";
+                this.$refs["ruleForm"].validate((valid) => {
+                    if (!valid) {
+                        return;
+                    }
+                    let comment = this.$refs.editor.innerHTML;
+                    if(!comment){
+                        this.$message.error('请输入评论哦');
+                        return;
+                    }
+                    this.ruleForm.comment = comment;
+                    this.ruleForm.pid = pid;
+                    this.$http.post('/comment/insertComment',this.ruleForm).then(response => {
+                        this.$message({
+                            message: '恭喜你，发布成功',
+                            type: 'success',
+                            duration:1000,
+                            onClose:()=>{
+                                window.location.reload();
+                            }
+                        });
+                        this.ruleForm = {
+                            nickname:"",
+                            tel :"",
+                            comment :"",
+                            pid :""
+                        };
+                    }, response => {
+                        this.$message.error(response.body.msg);
+                    });
+                    this.$refs.editor.innerHTML = "";
+                });
             },
         }
     });
