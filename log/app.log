@@ -1,0 +1,629 @@
+[2017-12-01T15:43:41.755] [ERROR] app - Something went wrong: { Error: Not Foundhttp://config.pinyin.sogou.com/api/toolbox/geturl.php?h=72E8A783DA6B095C6E3960EAFAA30385&v=8.7.0.1682&r=0000_sogou_pinyin_87b
+    at F:\project\project\blog\app.js:47:15
+    at Layer.handle [as handle_request] (F:\project\project\blog\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\project\project\blog\node_modules\express\lib\router\index.js:317:13)
+    at F:\project\project\blog\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\project\project\blog\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\project\project\blog\node_modules\express\lib\router\index.js:275:10)
+    at F:\project\project\blog\node_modules\express\lib\router\index.js:635:15
+    at next (F:\project\project\blog\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (F:\project\project\blog\node_modules\express\lib\router\index.js:174:3)
+    at router (F:\project\project\blog\node_modules\express\lib\router\index.js:47:12) status: 404 }
+[2017-12-01T16:20:04.256] [ERROR] app - Something went wrong: { Error: Not Foundhttp://config.pinyin.sogou.com/api/toolbox/geturl.php?h=72E8A783DA6B095C6E3960EAFAA30385&v=8.7.0.1682&r=0000_sogou_pinyin_87b
+    at F:\project\project\blog\app.js:47:15
+    at Layer.handle [as handle_request] (F:\project\project\blog\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\project\project\blog\node_modules\express\lib\router\index.js:317:13)
+    at F:\project\project\blog\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\project\project\blog\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\project\project\blog\node_modules\express\lib\router\index.js:275:10)
+    at F:\project\project\blog\node_modules\express\lib\router\index.js:635:15
+    at next (F:\project\project\blog\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (F:\project\project\blog\node_modules\express\lib\router\index.js:174:3)
+    at router (F:\project\project\blog\node_modules\express\lib\router\index.js:47:12) status: 404 }
+[2017-12-01T17:13:19.263] [ERROR] app - Something went wrong: { Error: Not Foundhttp://config.pinyin.sogou.com/api/toolbox/geturl.php?h=72E8A783DA6B095C6E3960EAFAA30385&v=8.7.0.1682&r=0000_sogou_pinyin_87b
+    at F:\project\project\blog\app.js:47:15
+    at Layer.handle [as handle_request] (F:\project\project\blog\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\project\project\blog\node_modules\express\lib\router\index.js:317:13)
+    at F:\project\project\blog\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\project\project\blog\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\project\project\blog\node_modules\express\lib\router\index.js:275:10)
+    at F:\project\project\blog\node_modules\express\lib\router\index.js:635:15
+    at next (F:\project\project\blog\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (F:\project\project\blog\node_modules\express\lib\router\index.js:174:3)
+    at router (F:\project\project\blog\node_modules\express\lib\router\index.js:47:12) status: 404 }
+[2017-12-01T18:20:13.489] [ERROR] app - Something went wrong: { ReferenceError: F:\project\project\blog\views\content.ejs:68
+    66| <script src="/javascripts/element-ui.js"></script>
+    67| <script>
+ >> 68|     let pid = "<%=id%>";
+    69|     new Vue( {
+    70|         el: '#app',
+    71|         data :{
+
+id is not defined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:35:25)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:46:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T18:20:14.438] [ERROR] app - Something went wrong: { ReferenceError: F:\project\project\blog\views\content.ejs:68
+    66| <script src="/javascripts/element-ui.js"></script>
+    67| <script>
+ >> 68|     let pid = "<%=id%>";
+    69|     new Vue( {
+    70|         el: '#app',
+    71|         data :{
+
+id is not defined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:35:25)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:46:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:06:42.644] [ERROR] app - Something went wrong: { ReferenceError: F:\project\project\blog\views\content.ejs:30
+    28|                 <div class="input-wrap ">
+    29|                     <ul>
+ >> 30|                         <% for(var i = 1; i <= comment.length;i++){%>
+    31|                         <li>
+    32|                             <p><%=comment[i].nickname%></p>
+    33|                             <p><%=comment[i].date%></p>
+
+comment is not defined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:32:28)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:46:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:06:56.746] [ERROR] app - Something went wrong: { TypeError: F:\project\project\blog\views\content.ejs:32
+    30|                         <% for(var i = 1; i <= comment.length;i++){%>
+    31|                         <li>
+ >> 32|                             <p><%=comment[i].nickname%></p>
+    33|                             <p><%=comment[i].date%></p>
+    34|                             <p><%=comment[i].comment%></p>
+    35|                         </li>
+
+Cannot read property 'nickname' of undefined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:35:36)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:57:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:06:57.236] [ERROR] app - Something went wrong: { TypeError: F:\project\project\blog\views\content.ejs:32
+    30|                         <% for(var i = 1; i <= comment.length;i++){%>
+    31|                         <li>
+ >> 32|                             <p><%=comment[i].nickname%></p>
+    33|                             <p><%=comment[i].date%></p>
+    34|                             <p><%=comment[i].comment%></p>
+    35|                         </li>
+
+Cannot read property 'nickname' of undefined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:35:36)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:57:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:06:57.497] [ERROR] app - Something went wrong: { TypeError: F:\project\project\blog\views\content.ejs:32
+    30|                         <% for(var i = 1; i <= comment.length;i++){%>
+    31|                         <li>
+ >> 32|                             <p><%=comment[i].nickname%></p>
+    33|                             <p><%=comment[i].date%></p>
+    34|                             <p><%=comment[i].comment%></p>
+    35|                         </li>
+
+Cannot read property 'nickname' of undefined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:35:36)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:57:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:06:57.693] [ERROR] app - Something went wrong: { TypeError: F:\project\project\blog\views\content.ejs:32
+    30|                         <% for(var i = 1; i <= comment.length;i++){%>
+    31|                         <li>
+ >> 32|                             <p><%=comment[i].nickname%></p>
+    33|                             <p><%=comment[i].date%></p>
+    34|                             <p><%=comment[i].comment%></p>
+    35|                         </li>
+
+Cannot read property 'nickname' of undefined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:35:36)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:57:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:08:11.353] [ERROR] app - Something went wrong: { TypeError: F:\project\project\blog\views\content.ejs:32
+    30|                         <% for(var i = 1; i <= comment.length;i++){%>
+    31|                         <li>
+ >> 32|                             <p><%=comment[i].nickname%></p>
+    33|                             <p><%=comment[i].date%></p>
+    34|                             <p><%=comment[i].comment%></p>
+    35|                         </li>
+
+Cannot read property 'nickname' of undefined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:35:36)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:57:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:10:24.748] [ERROR] app - Something went wrong: { TypeError: F:\project\project\blog\views\content.ejs:32
+    30|                         <% for(var i = 1; i <= comment.length;i++){%>
+    31|                         <li>
+ >> 32|                             <p><%=comment[i].date%></p>
+    33|                             <p><%=comment[i].comment%></p>
+    34|                         </li>
+    35|                         <% }%>
+
+Cannot read property 'date' of undefined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:38:36)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:57:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:10:25.486] [ERROR] app - Something went wrong: { TypeError: F:\project\project\blog\views\content.ejs:32
+    30|                         <% for(var i = 1; i <= comment.length;i++){%>
+    31|                         <li>
+ >> 32|                             <p><%=comment[i].date%></p>
+    33|                             <p><%=comment[i].comment%></p>
+    34|                         </li>
+    35|                         <% }%>
+
+Cannot read property 'date' of undefined
+    at eval (eval at compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:38:36)
+    at returnedFn (F:\project\project\blog\node_modules\ejs\lib\ejs.js:580:17)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:34)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+    at F:\project\project\blog\routes\content.js:57:9
+    at <anonymous> path: 'F:\\project\\project\\blog\\views\\content.ejs' }
+[2017-12-01T19:11:16.436] [ERROR] app - Something went wrong: SyntaxError: Unexpected token = in F:\project\project\blog\views\content.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+    at new Function (<anonymous>)
+    at Template.compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12)
+    at Object.compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:358:16)
+    at handleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:201:18)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:14)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+[2017-12-01T19:11:17.776] [ERROR] app - Something went wrong: SyntaxError: Unexpected token = in F:\project\project\blog\views\content.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+    at new Function (<anonymous>)
+    at Template.compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:549:12)
+    at Object.compile (F:\project\project\blog\node_modules\ejs\lib\ejs.js:358:16)
+    at handleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:201:18)
+    at tryHandleCache (F:\project\project\blog\node_modules\ejs\lib\ejs.js:223:14)
+    at View.exports.renderFile [as engine] (F:\project\project\blog\node_modules\ejs\lib\ejs.js:437:10)
+    at View.render (F:\project\project\blog\node_modules\express\lib\view.js:127:8)
+    at tryRender (F:\project\project\blog\node_modules\express\lib\application.js:640:10)
+    at Function.render (F:\project\project\blog\node_modules\express\lib\application.js:592:3)
+    at ServerResponse.render (F:\project\project\blog\node_modules\express\lib\response.js:971:7)
+[2017-12-01T19:38:06.719] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:34:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectList (F:\project\project\blog\dao\cms.js:11:19)
+    at Promise (F:\project\project\blog\routes\index.js:31:41)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:30:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:06.726] [ERROR] app - Something went wrong: { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:34:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectList (F:\project\project\blog\dao\cms.js:11:19)
+    at Promise (F:\project\project\blog\routes\index.js:31:41)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:30:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:06.736] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:78:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectListTotal (F:\project\project\blog\dao\cms.js:63:19)
+    at Promise (F:\project\project\blog\routes\index.js:41:42)
+    at new Promise (<anonymous>)
+    at menu (F:\project\project\blog\routes\index.js:40:27)
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:06.738] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\menu.js:11:12)
+    at new Promise (<anonymous>)
+    at Object.exports.getMenu (F:\project\project\blog\dao\menu.js:9:19)
+    at Promise (F:\project\project\blog\routes\index.js:53:42)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:50:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:06.875] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:34:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectList (F:\project\project\blog\dao\cms.js:11:19)
+    at Promise (F:\project\project\blog\routes\index.js:31:41)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:30:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:06.875] [ERROR] app - Something went wrong: { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:34:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectList (F:\project\project\blog\dao\cms.js:11:19)
+    at Promise (F:\project\project\blog\routes\index.js:31:41)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:30:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:06.877] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:78:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectListTotal (F:\project\project\blog\dao\cms.js:63:19)
+    at Promise (F:\project\project\blog\routes\index.js:41:42)
+    at new Promise (<anonymous>)
+    at menu (F:\project\project\blog\routes\index.js:40:27)
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:23.698] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:34:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectList (F:\project\project\blog\dao\cms.js:11:19)
+    at Promise (F:\project\project\blog\routes\index.js:31:41)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:30:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:23.708] [ERROR] app - Something went wrong: { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:34:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectList (F:\project\project\blog\dao\cms.js:11:19)
+    at Promise (F:\project\project\blog\routes\index.js:31:41)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:30:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:23.717] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:78:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectListTotal (F:\project\project\blog\dao\cms.js:63:19)
+    at Promise (F:\project\project\blog\routes\index.js:41:42)
+    at new Promise (<anonymous>)
+    at menu (F:\project\project\blog\routes\index.js:40:27)
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:23.719] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\menu.js:11:12)
+    at new Promise (<anonymous>)
+    at Object.exports.getMenu (F:\project\project\blog\dao\menu.js:9:19)
+    at Promise (F:\project\project\blog\routes\index.js:53:42)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:50:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:23.865] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:34:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectList (F:\project\project\blog\dao\cms.js:11:19)
+    at Promise (F:\project\project\blog\routes\index.js:31:41)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:30:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:23.866] [ERROR] app - Something went wrong: { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:34:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectList (F:\project\project\blog\dao\cms.js:11:19)
+    at Promise (F:\project\project\blog\routes\index.js:31:41)
+    at new Promise (<anonymous>)
+    at F:\project\project\blog\routes\index.js:30:27
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
+[2017-12-01T19:38:23.868] [ERROR] app - { Error: ER_ACCESS_DENIED_ERROR: Access denied for user 'xxx'@'localhost' (using password: YES)
+    at Handshake.Sequence._packetToError (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (F:\project\project\blog\node_modules\mysql\lib\protocol\sequences\Handshake.js:130:18)
+    at Protocol._parsePacket (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:279:23)
+    at Parser.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Parser.js:76:12)
+    at Protocol.write (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (F:\project\project\blog\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:125:13)
+    at Socket.emit (events.js:221:7)
+    at addChunk (_stream_readable.js:265:12)
+    at readableAddChunk (_stream_readable.js:252:11)
+    --------------------
+    at Protocol._enqueue (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:145:48)
+    at Protocol.handshake (F:\project\project\blog\node_modules\mysql\lib\protocol\Protocol.js:52:23)
+    at PoolConnection.connect (F:\project\project\blog\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (F:\project\project\blog\node_modules\mysql\lib\Pool.js:48:16)
+    at Promise (F:\project\project\blog\dao\cms.js:78:12)
+    at new Promise (<anonymous>)
+    at Object.exports.selectListTotal (F:\project\project\blog\dao\cms.js:63:19)
+    at Promise (F:\project\project\blog\routes\index.js:41:42)
+    at new Promise (<anonymous>)
+    at menu (F:\project\project\blog\routes\index.js:40:27)
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: 'Access denied for user \'xxx\'@\'localhost\' (using password: YES)',
+  sqlState: '28000',
+  fatal: true }
