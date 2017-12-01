@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
         next();
         return;
     }
-    let err = new Error("Not Found");
+    let err = new Error("Not Found" + req.url);
     err.status = 404;
     next(err);
 });
