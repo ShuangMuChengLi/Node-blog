@@ -37,13 +37,13 @@
                 </el-form>
                 <div>
                     <label class="el-form-item__label" style="width: 100px;">内容</label>
-                    <div id="editor" class="editor" type="text/plain" style="height:400px;"></div>
+                    <div id="editor" class="editor" type="text/plain" style="min-height:400px;"></div>
                 </div>
 
-                <p class="cms-submit">
-                    <button @click="del" v-if="cms.id">删除</button>
-                    <button @click="submitCms">提交</button>
-                </p>
+                <div class="cms-submit clearfix">
+                    <el-button @click="del" type="danger"  v-if="cms.id">删除</el-button>
+                    <el-button @click="submitCms" type="primary">提交</el-button>
+                </div>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
 <script src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script src="/ueditor/ueditor.all.min.js"></script>
 <script>
-    var ue = UE.getEditor('editor',{'autoHeightEnabled': false});
+    var ue = UE.getEditor('editor');
     var id = "<%= id%>";
 
     new Vue({
@@ -117,7 +117,14 @@
                                     type: 'success',
                                     duration: 1000,
                                     onClose:()=>{
-                                        window.location.href = "/html/cms/content.jsp?menu=" + this.cms.menu + "&id=" + response.body.data;
+                                        this.$confirm('是否继续编辑?', '提示', {
+                                            confirmButtonText: '确定',
+                                            cancelButtonText: '取消',
+                                            type: 'warning'
+                                        }).then(() => {
+                                        },() => {
+                                            window.location.href = "/html/cms/content.jsp?menu=" + this.cms.menu + "&id=" + response.body.data;
+                                        });
                                     }
                                 });
                             }else{
