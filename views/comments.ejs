@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/index.ico" type="image/x-icon" >
+    <link rel="stylesheet" href="/stylesheets/element-ui.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<%- include('common/header.ejs'); %>
+<div class="clearfix wrapper">
+    <%- include('common/left.ejs'); %>
+    <div class="main">
+        <div class="main-inner">
+            <div class="content-inner">
+                <div class="input-wrap "  id="app">
+                    <% for(var i = 0; i < comment.length;i++){%>
+                        <el-card :body-style="{ padding: '0px' }" style="padding: 14px;">
+                            <p class="author-title-p">
+                                <span><%=comment[i].nickname%></span>
+                                <span class="comment-date"><%=comment[i].date%></span>
+                            </p>
+                            <p class="author-title-p">
+                                <a href="/html/cms/content.jsp?menu=index&id=<%=comment[i].id%>" target="_blank"> <span><%=comment[i].title%></span></a>
+                            </p>
+                            <p class="author-title-p">
+                                <span><%=comment[i].tel%></span>
+                            </p>
+                            <p><%-comment[i].comment%></p>
+                        </el-card>
+                    <% }%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('common/footer.ejs'); %>
+<script src="/javascripts/vue.min.js"></script>
+<!-- 引入组件库 -->
+<!--<script src="https://unpkg.com/element-ui@2.0.5/lib/index.js"></script>-->
+<script src="/javascripts/element-ui.js"></script>
+<script>
+new Vue({
+    el: '#app'
+});
+</script>
+</body>
+</html>

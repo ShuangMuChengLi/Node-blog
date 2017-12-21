@@ -29,4 +29,14 @@ describe("comment", function() {
             done();
         });
     });
+    it("selectAllComment", function(done) {
+        const commentDao = require("../../dao/commentDao");
+        commentDao.selectAllComment().then((data)=>{
+            console.log(data);
+            done();
+        },(err)=>{
+            console.log(err);
+            done();
+        });
+    });
 });

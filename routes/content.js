@@ -49,7 +49,11 @@ router.get("/content.jsp", async function(req, res, next) {
                     reject();
                 });
                 for(let i=0;i<comment.length ; i++){
-                    comment[i].date = moment(comment[i].date).format("YYYY-MM-DD  HH:mm:ss")
+                    if(comment[i].date){
+                        comment[i].date = moment(comment[i].date).format("YYYY-MM-DD  HH:mm:ss");
+                    }else{
+                        comment[i].date = "";
+                    }
                 }
                 resolve(comment);
             });

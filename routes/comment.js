@@ -3,6 +3,10 @@ let router = express.Router();
 let commentDao = require("../dao/commentDao");
 let ipCount = require("../service/util/ipCount");
 let get_ip = require('ipware')().get_ip;
+let menuCache = require("../cache/menu");
+let moment = require("moment");
+let menuDao = require("../dao/menu");
+let parallel = require("../service/util/async").parallel;
 /**
  * {
         nickname:"昵称",
@@ -43,5 +47,44 @@ router.post("/insertComment", async (routeReq, routeRes, next)=>{
     let data = JSON.stringify(respontData);
     routeRes.end(data);
 });
-
+router.get("/", async function(req, res, next) {
+    let result = await parallel([
+        function () {
+            let promise = new Promise(async (resolve,reject)=>{
+                let menu = [];
+                if(menuCache.menuList.length === 0){
+                    menu = await menuDao.getMenu().catch((err)=>{
+                        next(err);
+                        reject();
+                    });
+                    menuCache.menuList = menu;
+                }else{
+                    menu = menuCache.menuList;
+                }
+                resolve(menu);
+            });
+            return promise;
+        },
+        function () {
+            let promise = new Promise(async (resolve,reject)=>{
+                let comment = await commentDao.selectAllComment().catch((err)=>{
+                    next(err);
+                    reject();
+                });
+                for(let i=0;i<comment.length ; i++){
+                    if(comment[i].date){
+                        comment[i].date = moment(comment[i].date).format("YYYY-MM-DD  HH:mm:ss");
+                    }else{
+                        comment[i].date = "";
+                    }
+                }
+                resolve(comment);
+            });
+            return promise;
+        },
+    ]).catch((err)=>{
+        next(err);
+    });
+    res.render("comments", {menu:"cms" , menuList:result[0],comment:result[1]});
+});
 module.exports = router;

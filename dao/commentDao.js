@@ -64,3 +64,28 @@ exports.selectComment = function (id) {
     });
     return promise;
 };
+exports.selectAllComment = function () {
+    let promise = new Promise((resolve, reject) => {
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
+            }
+            connection.query(
+                "SELECT cms.id ,cms.title, comment.nickname,comment.comment, comment.tel, comment.date  FROM comment INNER JOIN cms WHERE cms.id=comment.pid ORDER BY date ASC ,id DESC",
+                [],
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(rows);
+                }
+            );
+        });
+    });
+    return promise;
+};
