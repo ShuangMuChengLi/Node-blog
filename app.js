@@ -8,9 +8,11 @@ let bodyParser = require("body-parser");
 let lessMiddleware = require("less-middleware");
 
 let index = require("./routes/index");
+let note = require("./routes/note");
 let content = require("./routes/content");
 let cms = require("./routes/cms");
 let comment = require("./routes/comment");
+const upload = require("./routes/upload");
 let ueditor = require("./routes/ueditor-route");
 let submitCms = require("./routes/cms-form");
 let console = require("console");
@@ -37,10 +39,11 @@ app.use(express.static(path.join(__dirname, "ueditor")));
 app.use("/html/cms", content);
 app.use("/cmsForm", submitCms);
 app.use("/comment", comment);
+app.use("/upload", upload);
 app.use("/ueditor/ue", ueditor);
 app.use("/cms", cms);
+app.use("/note", note);
 app.use("/", index);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     if(req.headers.accept.match("image")){

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/index.ico" type="image/x-icon" >
+    <link rel="stylesheet" href="/stylesheets/element-ui.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<%- include('common/header.ejs'); %>
+<div class="clearfix wrapper"  id="app">
+    <div class="main">
+        <div class="main-inner">
+            <div class="content-inner">
+                <div class="input-wrap " >
+                    <% for(var i = 0; i < comment.length;i++){%>
+                    <el-card :body-style="{ padding: '0px' }" style="padding: 14px;">
+                        <p class="author-title-p">
+                            <span class="comment-date"><%=comment[i].date%></span>
+                        </p>
+                        <p><%-comment[i].comment%></p>
+                    </el-card>
+                    <% }%>
+                    <div class="comment-form">
+                        <div class="pr">
+                            <div class="faceContent" v-show="faceListVisible">
+                                <ul class="clearfix">
+                                    <li v-for="(item,index) in 104" @click="faceSelect(item)">
+                                        <img :src="'/images/face/faceIcon/' + item + '.png'">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tool">
+                                <a href="javascript:void(0)" id="faceIcon" @click="faceListVisible = !faceListVisible">
+                                    <img src="/images/face.png">
+                                </a>
+                                <a href="javascript:void(0)"  @click="dialogVisible = !dialogVisible">
+                                    <img src="/images/img.png">
+                                </a>
+                            </div>
+                            <div contenteditable="true" class="input" v-html="inputMsg" ref="editor">  </div>
+                            <div class="submit" @click="submitMsg">发送</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <el-dialog title="上传" :visible.sync="dialogVisible" class="file-dialog" width="30%">
+            <el-upload
+                class="upload-demo"
+                action="/upload"
+                drag
+                ref="upload"
+                :on-success="uploadHandler"
+                :on-remove="uploadHandler"
+                list-type="picture">
+                <i class="el-icon-upload"></i>
+                <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                <div class="el-upload__tip" slot="tip">只能上传图片、pdf、html文件，且不超过500kb</div>
+            </el-upload>
+            <div class="dialog-footer">
+                <a href="javascript:void(0)" class="dialog-btn gray-btn" @click="dialogClose()">
+                    <span>关闭</span>
+                </a>
+                <a href="javascript:void(0)" class="dialog-btn green-btn" @click="dialogSure()">
+                    <span>确定</span>
+                </a>
+            </div>
+        </el-dialog>
+    </div>
+</div>
+<%- include('common/footer.ejs'); %>
+<!--<script src="https://unpkg.com/vue@2.5.9"></script>-->
+<script src="/javascripts/vue.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>-->
+<script src="/javascripts/vue-resource.min.js"></script>
+<!-- 引入组件库 -->
+<!--<script src="https://unpkg.com/element-ui@2.0.5/lib/index.js"></script>-->
+<script src="/javascripts/element-ui.js"></script>
+<script>
+    try {
+        new Vue({
+            el: '#app',
+            data :{
+                faceListVisible:false,
+                dialogVisible:false,
+                fileList:[],
+                inputMsg:"",
+                ruleForm:{
+                    nickname:"mom",
+                    tel :"",
+                    comment :"",
+                    pid :"mom"
+                }
+            },
+            mounted: function () {
+            },
+            methods: {
+                uploadHandler (response, file, fileList){
+                    this.fileList = [];
+                    for(let item of fileList){
+                        if (item.response && item.response.code && item.response.code === "success") {
+                            this.fileList.push(item.response.path);
+                        }
+                    }
+                },
+                // 文件对话框取消
+                dialogClose(){
+                    this.dialogVisible = false;
+                    this.fileList = [];
+                    this.$refs.upload.clearFiles();
+                },
+                // 文件对话框确定
+                dialogSure(){
+                    this.dialogVisible = false;
+                    for(let item of this.fileList){
+                        this.insertText("<div class='dialogue-img-wrap'><img src='" + item + "'/></div>");
+                    }
+                    this.fileList = [];
+                    this.$refs.upload.clearFiles();
+                },
+                // 表情选择
+                faceSelect(item){
+                    this.insertText("<img src='/images/face/faceIcon/" + item + ".png'>");
+                    this.faceListVisible = false;
+                },
+                // 光标控制,插入内容
+                insertText(str) {
+                    let obj = this.$refs.editor;
+                    if (document.selection) {
+                        let sel = document.selection.createRange();
+                        sel.text = str;
+                    } else if (typeof obj.selectionStart === "number" && typeof obj.selectionEnd === "number") {
+                        let startPos = obj.selectionStart,
+                            endPos = obj.selectionEnd,
+                            cursorPos = startPos,
+                            tmpStr = obj.innerHTML;
+                        obj.innerHTML = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);
+                        cursorPos += str.length;
+                        obj.selectionStart = obj.selectionEnd = cursorPos;
+                    } else {
+                        obj.innerHTML += str;
+                    }
+                },
+                // 发送文本
+                submitMsg(){
+                    let comment = this.$refs.editor.innerHTML;
+                    if(!comment){
+                        this.$message.error('请输入评论哦');
+                        return;
+                    }
+                    this.ruleForm.comment = comment;
+                    this.$http.post('/comment/insertComment',this.ruleForm).then(response => {
+                        if(response.body.status && response.body.status === 200){
+                            this.$message({
+                                message: '恭喜你，发布成功',
+                                type: 'success',
+                                duration:1000,
+                                onClose:()=>{
+                                    window.location.reload();
+                                }
+                            });
+                            this.ruleForm = {
+                                nickname:"",
+                                tel :"",
+                                comment :"",
+                                pid :""
+                            };
+                        }else{
+                            this.$message.error(response.body.msg);
+                        }
+                    }, response => {
+                        this.$message.error(response.body.msg);
+                    });
+                    this.$refs.editor.innerHTML = "";
+                },
+            }
+        });
+    }catch (e){
+        console.log(e)
+    }
+
+
+</script>
+</body>
+</html>

@@ -6,6 +6,11 @@ let menuDao = require("../dao/menu");
 let router = express.Router();
 let menuCache = require("../cache/menu");
 async function getList(req, res, next) {
+    if(req.host === "m.linchaoqun.com"){
+        res.writeHead(301, {'Location': '/note'});
+        res.end();
+        return;
+    }
     let params = req.params;
     params.page = params.page?  parseInt(params.page) : 1;
     params.menu = params.menu?  params.menu : "index";
