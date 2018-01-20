@@ -15,6 +15,7 @@ let comment = require("./routes/comment");
 const upload = require("./routes/upload");
 let ueditor = require("./routes/ueditor-route");
 let submitCms = require("./routes/cms-form");
+let logMiddleware = require("./service/middleware/log");
 let console = require("console");
 let compression = require("compression");
 let app = express();
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "upload")));
 app.use(express.static(path.join(__dirname, "ueditor")));
 
+app.use(logMiddleware);
 app.use("/html/cms", content);
 app.use("/cmsForm", submitCms);
 app.use("/comment", comment);

@@ -31,6 +31,7 @@ router.post("/insertComment", async (routeReq, routeRes, next)=>{
     }
     ipCount.addIpCount(ip);
     let arg = routeReq.body;
+    arg.ip = ip;
     let result = await commentDao.insertComment(arg).catch((err)=>{
         next(err);
         return false;

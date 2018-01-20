@@ -23,8 +23,8 @@ exports.insertComment = function (arg) {
             }
             let id = uuidV4();
             connection.query(
-                "INSERT INTO comment (id , nickname,tel,comment,pid,del,date) VALUES (?,?,?,?,?,0,?)",
-                [id,arg.nickname,arg.tel,arg.comment,arg.pid,new Date()],
+                "INSERT INTO comment (id , nickname,tel,comment,pid,del,date,ip) VALUES (?,?,?,?,?,0,?,?)",
+                [id,arg.nickname,arg.tel,arg.comment,arg.pid,new Date(),arg.ip],
                 function (err, rows) {
                     connection.release();
                     if (err) {
@@ -73,7 +73,7 @@ exports.selectAllComment = function () {
                 return;
             }
             connection.query(
-                "SELECT cms.id ,cms.title, comment.nickname,comment.comment, comment.tel, comment.date  FROM comment INNER JOIN cms WHERE cms.id=comment.pid ORDER BY date ASC ,id DESC",
+                "SELECT cms.id ,cms.title, comment.nickname,comment.comment, comment.tel, comment.date, comment.ip  FROM comment INNER JOIN cms WHERE cms.id=comment.pid ORDER BY date ASC ,id DESC",
                 [],
                 function (err, rows) {
                     connection.release();
