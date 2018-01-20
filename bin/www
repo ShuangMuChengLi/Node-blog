@@ -3,20 +3,12 @@
 /**
  * Module dependencies.
  */
-try {
-    require("fs").mkdirSync("./log");
-} catch (e) {
-    if (e.code !== "EEXIST") {
-        console.error("Could not set up log directory, error was: ", e);
-        process.exit(1);
-    }
-}
+
 let app = require("../app");
 let open = require("open");
 let debug = require("debug")("blog:server");
 let http = require("http");
-let log4js = require("log4js");
-log4js.configure("./config/log4js.json");
+const log4js = require("../service/log4js-service");
 /**
  * Get port from environment and store in Express.
  */
@@ -63,6 +55,7 @@ function normalizePort(val) {
  */
 
 function onError(error) {
+    log4js.getLogger("errorLog").error(error);
     if (error.syscall !== "listen") {
         throw error;
     }
@@ -96,5 +89,6 @@ function onListening() {
         ? "pipe " + addr
         : "port " + addr.port;
     debug("Listening on " + bind);
+    log4js.getLogger("accessLog").log("Listening on " + bind);
     open("http://localhost:" + addr.port );
 }

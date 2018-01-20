@@ -1,16 +1,18 @@
 let get_ip = require("ipware")().get_ip;
 const logDao = require("../../dao/logDao");
-module.exports = async (req, res, next) =>{
+const log4js = require("../../service/log4js-service");
+module.exports = (req, res, next) =>{
     let ip = get_ip(req).clientIp;
     let arg = {
         ip:ip,
         page : req.url
     };
-    let result = await logDao.insertLog(arg).catch((err)=>{
-        next(err,req, res);
-        return false;
+    log4js.getLogger("accessLog").info({
+        ip:ip,
+        page : req.url
     });
-    if(result){
-        next(null,req, res);
-    }
+    logDao.insertLog(arg).catch((err)=>{
+        log4js.getLogger("errorLog").error(err);
+    });
+    next(null,req, res);
 };

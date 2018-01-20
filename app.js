@@ -1,12 +1,11 @@
 let express = require("express");
-const log4js = require("log4js");
 let path = require("path");
 let favicon = require("serve-favicon");
 let logger = require("morgan");
 let cookieParser = require("cookie-parser");
 let bodyParser = require("body-parser");
 let lessMiddleware = require("less-middleware");
-
+const log4js = require("./service/log4js-service");
 let index = require("./routes/index");
 let note = require("./routes/note");
 let content = require("./routes/content");
@@ -24,7 +23,6 @@ app.use(bodyParser.urlencoded({limit:"50mb", extended: false }));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-const log = log4js.getLogger("app");
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, "public", "index.ico")));
 app.use(compression());
@@ -70,6 +68,7 @@ app.use(function(err, req, res, next) {
     // res.render("error");
     res.writeHead(200, {"Content-Type": "application/json;charset=utf-8"});
     console.info(err);
+    log4js.getLogger("errorLog").error(err);
     let resule = {
         status:err.code,
         msg:err.message,
