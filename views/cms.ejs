@@ -122,6 +122,9 @@
                                             cancelButtonText: '取消',
                                             type: 'warning'
                                         }).then(() => {
+                                            if(!id){
+                                                window.location.href = "/cms/" + response.body.data;
+                                            }
                                         },() => {
                                             window.location.href = "/html/cms/content.jsp?menu=" + this.cms.menu + "&id=" + response.body.data;
                                         });
