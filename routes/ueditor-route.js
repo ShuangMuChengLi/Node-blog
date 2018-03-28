@@ -5,9 +5,11 @@ let formidable = require("formidable");
 let qs = require("querystring");//解析参数的库
 let fs = require("fs");
 let http = require("http");
+let https = require("https");
 let async = require("async");
 const url = require("url");
 let conf = require("../config/conf");// 图片服务器地址配置
+const log4js = require("../service/log4js-service");
 module.exports = function (routeReq, routeRes, next) {
     if (routeReq.query.action === "config") {
         routeRes.setHeader("Content-Type", "application/json");
@@ -18,12 +20,21 @@ module.exports = function (routeReq, routeRes, next) {
                 async.waterfall([
                     function(callback) {
                         let oUrl = url.parse(remoteUrl);
+                        let fn = null;
+                        let port = null;
+                        if(oUrl.protocol === 'https:'){
+                            fn = https;
+                            port = oUrl.port || 443;
+                        }else{
+                            fn = http;
+                            port = oUrl.port || 80;
+                        }
                         let aPath = oUrl.pathname.split("/");
                         let filename = aPath[aPath.length - 1];
-                        let req = http.get({
+                        let req = fn.get({
                             host: oUrl.hostname,
                             path: oUrl.pathname,
-                            port: oUrl.port || 80
+                            port: port
                         }, function (res) {
                             let rawData = "";
                             res.setEncoding("binary");
@@ -88,6 +99,7 @@ module.exports = function (routeReq, routeRes, next) {
                                 sResule.size = base64Data.length;
                             } else {
                                 sResule.state = "Fail";
+                                log4js.getLogger("errorLog").error(jDate);
                             }
                             callbackfirst(null,sResule);
                         });

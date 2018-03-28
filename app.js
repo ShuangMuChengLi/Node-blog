@@ -57,7 +57,6 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-    log.error("Something went wrong:", err);
     console.error("Something went wrong:", err);
     // set locals, only providing error in development
     // res.locals.message = err.message;
