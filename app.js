@@ -12,12 +12,19 @@ let content = require("./routes/content");
 let cms = require("./routes/cms");
 let comment = require("./routes/comment");
 const upload = require("./routes/upload");
+const user = require("./routes/users");
 let ueditor = require("./routes/ueditor-route");
 let submitCms = require("./routes/cms-form");
 let logMiddleware = require("./service/middleware/log");
 let console = require("console");
 let compression = require("compression");
+let cors = require('cors');
+let corsOptions = {
+    origin: 'http://localhost:8080',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 let app = express();
+app.use(cors(corsOptions));
 app.use(bodyParser.json({limit:"50mb"}));
 app.use(bodyParser.urlencoded({limit:"50mb", extended: false }));
 // view engine setup
@@ -35,6 +42,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "upload")));
 app.use(express.static(path.join(__dirname, "ueditor")));
 
+
 app.use(logMiddleware);
 app.use("/html/cms", content);
 app.use("/cmsForm", submitCms);
@@ -43,6 +51,7 @@ app.use("/upload", upload);
 app.use("/ueditor/ue", ueditor);
 app.use("/cms", cms);
 app.use("/note", note);
+app.use("/user", user);
 app.use("/", index);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

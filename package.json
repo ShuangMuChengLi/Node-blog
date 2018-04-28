@@ -12,10 +12,12 @@
     "body-parser": "~1.18.2",
     "compression": "^1.7.1",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
     "formidable": "^1.1.1",
+    "http-proxy": "^1.16.2",
     "ipware": "^1.0.0",
     "less-middleware": "~2.2.1",
     "lodash": "^4.17.4",
@@ -25,7 +27,7 @@
     "mysql": "^2.15.0",
     "redis": "^2.8.0",
     "serve-favicon": "~2.4.5",
-    "uuid": "^3.1.0"
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",

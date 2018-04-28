@@ -1,12 +1,4 @@
-var redis = require("redis"),
-    bluebird = require("bluebird");
-bluebird.promisifyAll(redis.RedisClient.prototype);
-bluebird.promisifyAll(redis.Multi.prototype);
-let client = redis.createClient();
-client.auth("g7845120");
-client.on("error",(err)=>{
-    console.log(err)
-});
+let client = require("../RedisClient").client;
 module.exports = {
     async addIpCount(ip,ex) {
         ex = ex || 60;

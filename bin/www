@@ -6,21 +6,25 @@
 
 let app = require("../app");
 let open = require("open");
+let fs = require("fs");
 let debug = require("debug")("blog:server");
-let http = require("http");
+let https = require("https");
 const log4js = require("../service/log4js-service");
 /**
  * Get port from environment and store in Express.
  */
-
-let port = normalizePort(process.env.PORT || "80");
+var options = {
+    key  : fs.readFileSync('./cert/214593159680478.key'),
+    cert : fs.readFileSync('./cert/214593159680478.pem')
+}
+let port = normalizePort(process.env.PORT || "443");
 app.set("port", port);
 
 /**
  * Create HTTP server.
  */
 
-let server = http.createServer(app);
+let server = https.createServer(options,app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -90,5 +94,5 @@ function onListening() {
         : "port " + addr.port;
     debug("Listening on " + bind);
     log4js.getLogger("accessLog").log("Listening on " + bind);
-    open("http://localhost:" + addr.port );
+    open("https://localhost:" + addr.port );
 }
