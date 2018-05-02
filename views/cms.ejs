@@ -48,6 +48,8 @@
         </div>
     </div>
 </div>
+
+<%- include('common/footer.ejs'); %>
 <!--<script src="https://unpkg.com/vue@2.5.9"></script>-->
 <script src="/javascripts/vue.min.js"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>-->
@@ -61,7 +63,6 @@
 <script>
     var ue = UE.getEditor('editor');
     var id = "<%= id%>";
-
     new Vue({
         el: '#app',
         data: {
@@ -176,6 +177,5 @@
         }
     })
 </script>
-<%- include('common/footer.ejs'); %>
 </body>
 </html>

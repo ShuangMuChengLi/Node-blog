@@ -15,7 +15,7 @@ async function getPage(req, res, next) {
     let id = params.id? params.id : "";
     let token = params.token;
     if(!token){
-        res.redirect(pageHost + '/index.html/#/login');
+        res.redirect(pageHost + "/login.html#/login");
         return;
     }else{
         let userInfo = await RedisClient.getAsync(token).catch((e)=>{

@@ -17,6 +17,7 @@
     "ejs": "~2.5.7",
     "express": "~4.15.5",
     "formidable": "^1.1.1",
+    "html5-storage": "^1.0.3",
     "http-proxy": "^1.16.2",
     "ipware": "^1.0.0",
     "less-middleware": "~2.2.1",
