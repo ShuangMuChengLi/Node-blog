@@ -20,7 +20,7 @@ async function getPage(req, res, next) {
     }else{
         let userInfo = await RedisClient.getAsync(token).catch((e)=>{
             log4js.getLogger("errorLog").error(e);
-            res.redirect(pageHost + '/index.html/#/login');
+            res.redirect(pageHost + '/login.html#/login');
             return false;
         });
         if(userInfo){
@@ -52,14 +52,14 @@ async function getPage(req, res, next) {
             res.render("cms", { menu:"cms" , menuList:result[0] ,id:id});
         }else{
             log4js.getLogger("errorLog").error("token不存在" + token);
-            res.redirect(pageHost + '/index.html/#/login');
+            res.redirect(pageHost + '/login.html#/login');
             return false;
         }
     }
 }
 router.get("/page/:token",getPage );
 router.get("/page/:id/:token", getPage);
-router.get("/content/:id/:token", async function(routeReq, routeRes, next) {
+router.get("/content/:id", async function(routeReq, routeRes, next) {
     let params = routeReq.params;
     let id = params.id?  params.id : "";
     let content = {};
