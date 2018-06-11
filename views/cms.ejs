@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/element-ui.css">
 </head>
 <body >
+<div id="particles-js" class="bg"></div>
+<div class="wrapper-content">
 <%- include('common/header.ejs'); %>
 <div class="clearfix wrapper" id="app">
     <%- include('common/left.ejs'); %>
@@ -40,13 +42,16 @@
                     <div id="editor" class="editor" type="text/plain" style="height:400px;"></div>
                 </div>
 
-                <p class="cms-submit">
-                    <button @click="del" v-if="cms.id">删除</button>
-                    <button @click="submitCms">提交</button>
-                </p>
+                <div class="cms-submit clearfix">
+                    <el-button @click="del" type="danger"  v-if="cms.id">删除</el-button>
+                    <el-button @click="submitCms" type="primary">提交</el-button>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<%- include('common/footer.ejs'); %>
 </div>
 <!--<script src="https://unpkg.com/vue@2.5.9"></script>-->
 <script src="/javascripts/vue.min.js"></script>
@@ -58,10 +63,11 @@
 <script src="/ueditor/ueditor.config.js"></script>
 <script src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script src="/ueditor/ueditor.all.min.js"></script>
+<script src="/javascripts/particles.min.js"></script>
+<script src="/javascripts/canvas.js"></script>
 <script>
-    var ue = UE.getEditor('editor',{'autoHeightEnabled': false});
+    var ue = UE.getEditor('editor');
     var id = "<%= id%>";
-
     new Vue({
         el: '#app',
         data: {
@@ -111,13 +117,28 @@
                         this.cms.content = ue.getContent();
                         // GET /someUrl
                         this.$http.post('/cmsForm/addOrUpdate',this.cms).then(response => {
-                            this.$message({
-                                message: '恭喜你，发布成功',
-                                type: 'success',
-                                onClose:()=>{
-                                    window.location.href = "/html/cms/content.jsp?menu=" + this.cms.menu + "&id=" + response.body.data;
-                                }
-                            });
+                            if(response.body.status && response.body.status === 200){
+                                this.$message({
+                                    message: '恭喜你，发布成功',
+                                    type: 'success',
+                                    duration: 1000,
+                                    onClose:()=>{
+                                        this.$confirm('是否继续编辑?', '提示', {
+                                            confirmButtonText: '确定',
+                                            cancelButtonText: '取消',
+                                            type: 'warning'
+                                        }).then(() => {
+                                            if(!id){
+                                                window.location.href = "/cms/" + response.body.data;
+                                            }
+                                        },() => {
+                                            window.location.href = "/html/cms/content.jsp?menu=" + this.cms.menu + "&id=" + response.body.data;
+                                        });
+                                    }
+                                });
+                            }else{
+                                this.$message.error(response.body.msg);
+                            }
                         }, response => {
                             this.$message.error(response.body.msg);
                         });
@@ -139,6 +160,7 @@
                             this.$message({
                                 message: '恭喜你，删除成功',
                                 type: 'success',
+                                duration: 1000,
                                 onClose:()=>{
                                     window.location.href = "/list/" + this.cms.menu;
                                 }
@@ -152,6 +174,7 @@
                 },() => {
                     this.$message({
                         type: 'info',
+                        duration: 1000,
                         message: '已取消删除'
                     });
                 });
@@ -159,6 +182,5 @@
         }
     })
 </script>
-<%- include('common/footer.ejs'); %>
 </body>
 </html>
