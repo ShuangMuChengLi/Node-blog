@@ -1,0 +1,37 @@
+.audio{
+    visibility: hidden;
+}
+@keyframes music
+{
+    0%   {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
+
+@-webkit-keyframes music /* Safari 与 Chrome */
+{
+    0%   {
+        -webkit-transform: rotate(0); /* Safari and Chrome */}
+    100% {
+        -webkit-transform: rotate(360deg); /* Safari and Chrome */}
+}
+.music-icon{
+    background: url("../images/music_48px_1180565_easyicon.net.png") 0 0 no-repeat;
+    width: 48px;
+    height: 48px;
+    position: fixed;
+    right: 20px;
+    z-index: 9999;
+}
+.music-icon.animation{
+    animation: music 5s linear 0s infinite;
+    /* Safari 与 Chrome: */
+    -webkit-animation: music 5s linear 0s infinite;
+}
+.music-icon.animation-runing{
+    animation-play-state:running;
+    -webkit-animation-play-state:running; /* Safari 和 Chrome */
+}
+.music-icon.animation-paused{
+    animation-play-state:paused;
+    -webkit-animation-play-state:paused; /* Safari 和 Chrome */
+}

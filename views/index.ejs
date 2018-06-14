@@ -2,55 +2,67 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="/index.ico" type="image/x-icon" >
+    <link rel="shortcut icon" href="/index.ico" type="image/x-icon">
     <title>林超群博客</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link href="/music-comp/css/index.css" rel="stylesheet">
 </head>
 <body>
-<%- include('common/header.ejs'); %>
-<div class="clearfix">
-    <%- include('common/left.ejs'); %>
-    <div class="main">
-        <div class="main-inner">
-            <ul class="list-ul">
-                <% list.forEach(function(row){%>
-                <li class="list-li">
-                    <h2 class="list-h2">
-                        <a href="/html/cms/content.jsp?menu=<%= menu%>&id=<%= row.id%>">
-                            <i class="icon-link"></i> <%- row.title%> </a>
-                    </h2>
-                    <div class="list-info clearfix">
-                        <p class="list-p">
-                            <%- row.description%>
-                        </p>
-                        <a href="/html/cms/content.jsp?menu=<%= menu%>&id=<%= row.id%>" class="fr">阅读全文</a>
-                    </div>
-                </li>
-                <% })%>
-            </ul>
-            <ul class="pagination">
-                <% var keywordPath = keyword ? "/" + keyword : ""%>
-                <% if(pageInfo.prev) {%>
-                    <li><a href="/list/<%=menu%><%= keywordPath %>/<%=pageInfo.prev%>/<%=pageInfo.pageSize%>">«</a></li>
-                <% }%>
-                <% if(pageInfo.pageCount > 1) {%>
-                    <% for(var i = 1; i <= pageInfo.pageCount;i++){%>
-                        <li>
-                            <a
-                                class="<%= pageInfo.now === i ? 'active':""%>"
-                                href="/list/<%=menu%><%= keywordPath %>/<%= i%>/<%=pageInfo.pageSize%>">
-                                <%= i %>
-                            </a>
-                        </li>
-                    <% }%>
-                <% }%>
-                <% if(pageInfo.next) {%>
-                    <li><a href="/list/<%=menu%><%= keywordPath %>/<%=pageInfo.next%>/<%=pageInfo.pageSize%>">»</a></li>
-                <% }%>
-            </ul>
+<div id="particles-js" class="bg"></div>
+<div class="wrapper-content">
+    <%- include('common/header.ejs'); %>
+    <div class="clearfix container">
+        <%- include('common/left.ejs'); %>
+        <div class="main">
+            <div class="main-inner">
+                <ul class="list-ul">
+                    <% list.forEach(function(row){ %>
+                    <li class="list-li">
+                        <h2 class="list-h2">
+                            <a href="/html/cms/content.jsp?menu=<%= menu %>&id=<%= row.id %>">
+                                <i class="icon-link"></i> <%- row.title %> </a>
+                        </h2>
+                        <div class="list-info clearfix">
+                            <p class="list-p">
+                                <%- row.description %>
+                            </p>
+                            <a href="/html/cms/content.jsp?menu=<%= menu %>&id=<%= row.id %>" class="fr">阅读全文</a>
+                        </div>
+                    </li>
+                    <% }) %>
+                </ul>
+                <ul class="pagination">
+                    <% var keywordPath = keyword ? "/" + keyword : "" %>
+                    <% if(pageInfo.prev) { %>
+                    <li>
+                        <a href="/list/<%= menu %> <%= keywordPath %>/<%= pageInfo.prev %>/<%= pageInfo.pageSize %>">«</a>
+                    </li>
+                    <% } %>
+                    <% if(pageInfo.pageCount > 1) { %>
+                    <% for(var i = 1; i <= pageInfo.pageCount;i++){ %>
+                    <li>
+                        <a
+                            class="<%= pageInfo.now === i ? 'active' : "" %>"
+                            href="/list/<%= menu %> <%= keywordPath %>/<%= i %>/<%= pageInfo.pageSize %>">
+                            <%= i %>
+                        </a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                    <% if(pageInfo.next) { %>
+                    <li>
+                        <a href="/list/<%= menu %> <%= keywordPath %>/<%= pageInfo.next %>/<%= pageInfo.pageSize %>">»</a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
         </div>
     </div>
+    <%- include('common/footer.ejs'); %>
 </div>
-<%- include('common/footer.ejs'); %>
+<script src="/javascripts/particles.min.js"></script>
+<script src="/javascripts/canvas.js">
+
+</script>
 </body>
 </html>

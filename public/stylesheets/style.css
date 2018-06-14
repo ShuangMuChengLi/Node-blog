@@ -71,12 +71,8 @@ ul {
   list-style: none;
   padding: 0;
 }
-.wrapper {
-  max-width: 1480px;
-  margin: 0 auto;
-}
 .container {
-  max-width: 1280px;
+  max-width: 85%;
   margin: 0 auto;
 }
 .navbar-left {
@@ -200,6 +196,26 @@ ul.pagination li a.active {
 ul.pagination li a:hover:not(.active) {
   background-color: #ddd;
 }
+.bg {
+  margin: 0 0;
+  padding: 0 0;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.wrapper-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+}
 .content-inner {
   background-color: #fff;
   padding: 20px;
@@ -214,7 +230,8 @@ pre {
   margin: 0 0 10px;
   font-size: 13px;
   line-height: 1.42857143;
-  overflow-x: auto;
+  word-break: break-all;
+  word-wrap: break-word;
   color: #333;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
@@ -313,53 +330,9 @@ a.toolbar-btn {
   border: 1px solid #ccc;
   padding: 20px;
 }
-.toolbar-btn,
-a.toolbar-btn {
-  height: 26px;
-  border-radius: 3px;
-  line-height: 26px;
-  display: inline-block;
-  padding: 0 8px;
-  font-size: 12px;
-  color: #fff;
-  vertical-align: middle;
-  margin: 12px 20px 0 0;
-}
-.dialog-btn {
-  height: 26px;
-  border-radius: 3px;
-  line-height: 26px;
-  display: inline-block;
-  padding: 0 8px;
-  font-size: 12px;
-  color: #fff;
-  vertical-align: middle;
-  margin: 12px 20px 0 0;
-  box-sizing: border-box;
-  padding: 0 27px;
-}
-.dialog-btn:hover,
-.toolbar-btn:hover {
-  color: #fff;
-}
-.green-btn {
-  background-color: #46a549;
-}
-.orange-btn {
-  background-color: #fe7800;
-}
-.red-btn {
-  background-color: #f33b18;
-}
-.yellow-btn {
-  background-color: #46a549;
-}
-.gray-btn {
-  background-color: #aaaaaa;
-}
 .cms-submit {
-  margin: 20px 20px 0;
-  text-align: right;
+  margin: 20px;
+  float: right;
 }
 .editor {
   margin-left: 100px;
@@ -377,4 +350,49 @@ a.toolbar-btn {
 }
 .copyright a {
   color: #999;
+}
+.audio {
+  visibility: hidden;
+}
+@keyframes music {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes music {
+  /* Safari 与 Chrome */
+  0% {
+    -webkit-transform: rotate(0);
+    /* Safari and Chrome */
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    /* Safari and Chrome */
+  }
+}
+.music-icon {
+  background: url("../images/music_48px_1180565_easyicon.net.png") 0 0 no-repeat;
+  width: 48px;
+  height: 48px;
+  position: fixed;
+  top: 148px;
+  right: 20px;
+}
+.music-icon.animation {
+  animation: music 5s linear 0s infinite;
+  /* Safari 与 Chrome: */
+  -webkit-animation: music 5s linear 0s infinite;
+}
+.music-icon.animation-runing {
+  animation-play-state: running;
+  -webkit-animation-play-state: running;
+  /* Safari 和 Chrome */
+}
+.music-icon.animation-paused {
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  /* Safari 和 Chrome */
 }

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/element-ui.css">
 </head>
 <body >
+<div id="particles-js" class="bg"></div>
+<div class="wrapper-content">
 <%- include('common/header.ejs'); %>
 <div class="clearfix wrapper" id="app">
     <%- include('common/left.ejs'); %>
@@ -37,7 +39,7 @@
                 </el-form>
                 <div>
                     <label class="el-form-item__label" style="width: 100px;">内容</label>
-                    <div id="editor" class="editor" type="text/plain" style="min-height:400px;"></div>
+                    <div id="editor" class="editor" type="text/plain" style="height:400px;"></div>
                 </div>
 
                 <div class="cms-submit clearfix">
@@ -60,6 +62,8 @@
 <script src="/ueditor/ueditor.config.js"></script>
 <script src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script src="/ueditor/ueditor.all.min.js"></script>
+<script src="/javascripts/particles.min.js"></script>
+<script src="/javascripts/canvas.js"></script>
 <script>
     var ue = UE.getEditor('editor');
     var id = "<%= id%>";
