@@ -26,15 +26,10 @@ router.post("/addOrUpdate", async function(routeReq, routeRes, next) {
     let data = JSON.stringify(respontData);
     routeRes.end(data);
 });
-router.post("/del", async function(routeReq, routeRes, next) {
-    let arg = routeReq.body;
-    let fn = null;
-    if(arg.id){
-        fn = cmsDao.updateContent;
-    }else{
-        fn = cmsDao.insertContent;
-    }
-    let result = await fn(arg).catch((err)=>{
+router.delete("/:id", async function(routeReq, routeRes, next) {
+    let id = routeReq.params.id;
+    let fn = cmsDao.delContent;
+    let result = await fn(id).catch((err)=>{
         next(err);
         return false;
     });

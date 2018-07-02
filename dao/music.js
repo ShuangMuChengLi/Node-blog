@@ -13,24 +13,8 @@ exports.selectList = function (arg) {
         let selectArg = [];
         let begin = arg.begin ? parseInt(arg.begin) - 1 : 0;
         let count = arg.count ? parseInt(arg.count) : 10;
-        let menu = arg.menu;
-        let keyword = arg.keyword;
-        if (arg) {
-            if(menu){
-                if (menu === "index") {
-                    sSql = "SELECT id,title,keyword,description,date,menu,isIndex FROM  cms where isindex=1 and del!=1 and (title like '%" + keyword + "%' or description like '%\" + keyword + \"%')  ORDER BY date DESC,isindex DESC limit ?,?";
-                    selectArg = [begin, count];
-                } else if(menu !== "search" && menu !== "all"){
-                    sSql = "SELECT id,title,keyword,description,date,menu,isIndex FROM  cms where del!=1 and menu=? and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY date DESC ,isindex DESC limit ?,?";
-                    selectArg = [menu, begin, count];
-                }else{
-                    sSql = "SELECT id,title,keyword,description,date,menu,isIndex FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY date DESC,isindex DESC limit ?,?";
-                    selectArg = [begin, count];
-                }
-            }
-
-        }
-        console.log(sSql);
+        sSql = "SELECT * FROM  music where del!=1 ORDER BY sort ASC,date DESC limit ?,?";
+        selectArg = [begin, count];
         db.getConnection(function (err, connection) {
             if (err) {
                 log.error(err);
@@ -63,18 +47,7 @@ exports.selectListTotal = function (arg) {
     let promise = new Promise((resolve, reject) => {
         let selectArg = [];
         let sSql = "";
-        let menu = arg.menu;
-        let keyword = arg.keyword;
-        if (arg) {
-            if (menu === "index") {
-                sSql = "SELECT count(*) AS total FROM  cms where isindex=1 and del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%')";
-            }else if(menu !== "search" && menu !== "all"){
-                sSql = "SELECT count(*) AS total  FROM  cms where del!=1 and menu=? and (title like '%" + keyword + "%' or description like '%" + keyword + "%')";
-                selectArg = [arg.menu];
-            } else {
-                sSql = "SELECT count(*) AS total FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%')";
-            }
-        }
+        sSql = "SELECT count(*) AS total FROM  music where del!=1";
         db.getConnection(function (err, connection) {
             if (err) {
                 log.error(err);
@@ -98,43 +71,10 @@ exports.selectListTotal = function (arg) {
     });
     return promise;
 };
-exports.getContent = function (id) {
-    let promise = new Promise((resolve, reject) => {
-        let sSql = "SELECT * FROM  cms where del!=1 and id=?";
-        db.getConnection(function (err, connection) {
-            if (err) {
-                log.error(err);
-                reject(err);
-                return;
-            }
-            connection.query(
-                sSql,
-                [id],
-                function (err, rows) {
-                    connection.release();
-                    if (err) {
-                        log.error(err);
-                        reject(err);
-                        return;
-                    }
-                    resolve(rows[0]);
-                }
-            );
-        });
-    });
-    return promise;
-};
+
 /**
  *
  * @param arg
- * arg = {
-            title:"标题",
-            keyword :"关键字",
-            description :"描述",
-            content :"内容",
-            menu :"菜单",
-            isindex : "1"
-        };
  * @returns {Promise}
  */
 exports.insertContent = function (arg) {
@@ -147,8 +87,16 @@ exports.insertContent = function (arg) {
             }
             let id = uuidV4();
             connection.query(
-                "INSERT INTO cms (id , title,keyword,description,content,menu,isindex,del,date) VALUES (?,?,?,?,?,?,?,?,?)",
-                [id,arg.title,arg.keyword,arg.description,arg.content,arg.menu,arg.isindex,0,new Date()],
+                "INSERT INTO music (id , title,singer,url,sort,del,date) VALUES (?,?,?,?,?,?,?)",
+                [
+                    id,
+                    arg.title,
+                    arg.singer,
+                    arg.url,
+                    arg.sort,
+                    0,
+                    new Date()
+                ],
                 function (err, rows) {
                     connection.release();
                     if (err) {
@@ -166,15 +114,6 @@ exports.insertContent = function (arg) {
 /**
  *
  * @param arg
- * arg = {
- *          id:"",
-            title:"标题",
-            keyword :"关键字",
-            description :"描述",
-            content :"内容",
-            menu :"菜单",
-            isindex : "1"
-        };
  * @returns {Promise}
  */
 exports.updateContent = function (arg) {
@@ -186,8 +125,15 @@ exports.updateContent = function (arg) {
                 return;
             }
             connection.query(
-                "UPDATE cms SET  title=?,keyword=?,description=?,content=?,menu=?,isindex=? WHERE id=?",
-                [arg.title,arg.keyword,arg.description,arg.content,arg.menu,arg.isindex,arg.id],
+                "UPDATE music SET  title=?,singer=?,url=?,sort=?,date=? WHERE id=?",
+                [
+                    arg.title,
+                    arg.singer,
+                    arg.url,
+                    arg.sort,
+                    new Date(),
+                    arg.id
+                ],
                 function (err, rows) {
                     connection.release();
                     if (err) {
@@ -196,6 +142,39 @@ exports.updateContent = function (arg) {
                         return;
                     }
                     resolve(arg.id);
+                }
+            );
+        });
+    });
+    return promise;
+};
+/**
+ *
+ * @param arg
+ * @returns {Promise}
+ */
+exports.sortMusic = function (arg) {
+    let promise = new Promise((resolve, reject) => {
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
+            }
+            connection.query(
+                "UPDATE music SET  sort=? WHERE id=?",
+                [
+                    arg.sort,
+                    arg.id
+                ],
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(true);
                 }
             );
         });
@@ -216,7 +195,7 @@ exports.delContent = function (id) {
                 return;
             }
             connection.query(
-                "UPDATE cms SET  del=1 WHERE id=?",
+                "UPDATE music SET  del=1 WHERE id=?",
                 [id],
                 function (err, rows) {
                     connection.release();

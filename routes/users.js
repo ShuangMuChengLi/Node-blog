@@ -41,6 +41,8 @@ router.post('/login', async function(req, res, next) {
             });
             if(result){
                 res.writeHead(200, {"Content-Type": "application/json;charset=utf-8"});
+                req.session.login = true;
+                console.log(req.session.login);
                 let respontData = {
                     status:200,
                     msg:"登录成功",

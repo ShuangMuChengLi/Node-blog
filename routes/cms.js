@@ -1,64 +1,44 @@
 let express = require("express");
 let router = express.Router();
 let parallel = require("../service/util/async").parallel;
-let RedisClient = require("../service/RedisClient").client;
-let log4js = require("../service/log4js-service");
 let menuDao = require("../dao/menu");
 let cms = require("../dao/cms");
 let menuCache = require("../cache/menu");
-let pageHost = require("../config/host-conf");
 let url = require("url");
 let qs = require("querystring");//解析参数的库
 /* GET home page. */
 async function getPage(req, res, next) {
     let params = req.params;
     let id = params.id? params.id : "";
-    let token = params.token;
-    if(!token){
-        res.redirect(pageHost + "/login.html#/login");
-        return;
-    }else{
-        let userInfo = await RedisClient.getAsync(token).catch((e)=>{
-            log4js.getLogger("errorLog").error(e);
-            res.redirect(pageHost + '/login.html#/login');
-            return false;
-        });
-        if(userInfo){
-            let result = await parallel([
-                function () {
-                    let promise = new Promise(async (resolve,reject)=>{
-                        let menu = [];
-                        if(menuCache.menuList.length === 0){
-                            menu = await menuDao.getMenu().catch((err)=>{
-                                next(err);
-                                reject();
-                                return false;
-                            });
-                            if(menu){
-                                menuCache.menuList = menu;
-                            }else{
-                                return;
-                            }
-                        }else{
-                            menu = menuCache.menuList;
-                        }
-                        resolve(menu);
+    let result = await parallel([
+        function () {
+            let promise = new Promise(async (resolve,reject)=>{
+                let menu = [];
+                if(menuCache.menuList.length === 0){
+                    menu = await menuDao.getMenu().catch((err)=>{
+                        next(err);
+                        reject();
+                        return false;
                     });
-                    return promise;
+                    if(menu){
+                        menuCache.menuList = menu;
+                    }else{
+                        return;
+                    }
+                }else{
+                    menu = menuCache.menuList;
                 }
-            ]).catch((err)=>{
-                next(err);
+                resolve(menu);
             });
-            res.render("cms", { menu:"cms" , menuList:result[0] ,id:id});
-        }else{
-            log4js.getLogger("errorLog").error("token不存在" + token);
-            res.redirect(pageHost + '/login.html#/login');
-            return false;
+            return promise;
         }
-    }
+    ]).catch((err)=>{
+        next(err);
+    });
+    res.render("cms", { menu:"cms" , menuList:result[0] ,id:id});
 }
-router.get("/page/:token",getPage );
-router.get("/page/:id/:token", getPage);
+router.get("/",getPage );
+router.get("/:id", getPage);
 router.get("/content/:id", async function(routeReq, routeRes, next) {
     let params = routeReq.params;
     let id = params.id?  params.id : "";

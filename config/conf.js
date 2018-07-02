@@ -1,8 +1,22 @@
 const fileServerPort = "6003";// 文件服务器
 const fileServerIp = "localhost"; // 文件服务器IP
-// const fileServerIp = "www.linchaoqun.com"; // 文件服务器IP
-const fileServerHostname = "http://localhost"; // 文件服务器域名
-// const fileServerHostname = "http://www.linchaoqun.com"; // 文件服务器域名
+let ENV = require("./env") ;
+let pageHost = "";
+let fileServerHostname = null;
+switch (ENV) {
+    case "dev": {
+        fileServerHostname = "http://localhost";
+        break
+    }
+    case "watch": {
+        fileServerHostname = "http://localhost";
+        break
+    }
+    case "production": {
+        fileServerHostname = "https://www.linchaoqun.com";
+        break
+    }
+}
 const fileServiceOrigin = fileServerHostname + ":" + fileServerPort;
 const fileServerPathname =  "/upload";
 module.exports={

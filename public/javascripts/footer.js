@@ -6,10 +6,11 @@ var _hmt = _hmt || [];
     s.parentNode.insertBefore(hm, s);
 })();
 var musicList =  [
+
     {
-        name: "心经",
-        singer: "王菲",
-        src: "/music/heart-sutra.mp3"
+        name: "李雷和韩梅梅",
+        singer: "徐誉滕",
+        src: "/music/3.mp3"
     },
     {
         name: "丽江小倩",
@@ -22,14 +23,14 @@ var musicList =  [
         src: "/music/2.mp3"
     },
     {
-        name: "李雷和韩梅梅",
-        singer: "徐誉滕",
-        src: "/music/3.mp3"
-    },
-    {
         name: "一念之间",
         singer: "张杰",
         src: "/music/4.mp3"
+    },
+    {
+        name: "心经",
+        singer: "王菲",
+        src: "/music/heart-sutra.mp3"
     },
 ];
 musicComp(musicList);

@@ -94,5 +94,4 @@ function onListening() {
         : "port " + addr.port;
     debug("Listening on " + bind);
     log4js.getLogger("accessLog").log("Listening on " + bind);
-    open("https://localhost:" + addr.port );
 }

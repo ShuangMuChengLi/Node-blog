@@ -21,19 +21,7 @@ function musicComp(musicList) {
             singer: "",
             src: ""
         };
-        function play() {
-            if(++index >=  musicList.length){
-                index = 0;
-            }
-            if(musicList[index] ){
-                setSrc(index);
-                music.load();
-                music.play();
-            }else{
-                console.error("")
-            }
-        }
-        function setSrc(index) {
+        function setSrc() {
             if(musicList[index].src){
                 currentMusic.src = musicList[index].src;
             }else{
@@ -50,6 +38,11 @@ function musicComp(musicList) {
             }else{
                 var reg = /\/(\w+)\.\w+$/;
                 var src = musicList[index];
+                if(musicList[index].src){
+                    src = musicList[index].src;
+                }else{
+                    src = musicList[index];
+                }
                 var fileName = src.match(reg)[1];
                 currentMusic.name = fileName;
             }
@@ -60,23 +53,52 @@ function musicComp(musicList) {
             }
         }
         musicSource.onerror = function () {
+            console.log("onerror");
             musicList.splice(index,1);
-            play();
+            if(musicRuning){
+                setSrc();
+                music.load();
+                music.play();
+            }else{
+                setSrc();
+                music.load();
+            }
+
         };
-        setSrc(index);
+        setSrc();
         music.load();
 
         musicIcon.addEventListener("click",function (e) {
             if(musicRuning){
+                musicRuning = !musicRuning;
                 this.setAttribute("class",  "music-icon animation animation-paused");
                 music.pause();
             }else{
+                musicRuning = !musicRuning;
                 this.setAttribute("class",  "music-icon animation animation-runing");
                 music.play();
             }
-            musicRuning = !musicRuning;
         });
-        music.onended = play;
+        music.onpause =  function() {
+            if(musicRuning){
+                console.log("onpause");
+                if(++index >=  musicList.length){
+                    index = 0;
+                }
+                setSrc();
+                music.load();
+                music.play();
+            }
+        };
+        // music.onended =  function() {
+        //     console.log("onended");
+        //     if(++index >=  musicList.length){
+        //         index = 0;
+        //     }
+        //     setSrc();
+        //     music.load();
+        //     music.play();
+        // };
     }
 }
 if (typeof module !== "undefined") {
