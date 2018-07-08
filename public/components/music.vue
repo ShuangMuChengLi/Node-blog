@@ -32,6 +32,10 @@
                                 size="mini"
                                 type="danger"
                                 @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                            <el-button
+                                size="mini"
+                                type="success"
+                                @click="play(scope.$index, scope.row)">试听</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -87,6 +91,8 @@
 <script>
     let axios = require("axios");
     let _ = require("lodash");
+
+    let musicComp = require("music-comp");
     export default {
         created() {
 
@@ -304,12 +310,26 @@
                     sort:99
                 };
                 this.dialogFormVisible = false;
+            },
+            play(index,row){
+                var musicList = [
+                    {
+                        name: row.title,
+                        singer: row.singer,
+                        src: row.url,
+                    }
+                ];
+
+                console.log(musicList)
+                musicComp(musicList);
+                musicComp.play();
             }
         }
     }
 </script>
 
 <style scoped lang="less">
+
     @import "../css/common";
     @import "../css/list";
     @import "../css/music";

@@ -5,32 +5,16 @@ var _hmt = _hmt || [];
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
 })();
-var musicList =  [
+axios.get("/music?begin=1&count=100").then(function (res){
+    let data = res.data.data[0];
+    var musicList = [];
+    for(var i = 0; i < data.length ; i ++){
+        musicList.push({
+            name: data[i].title,
+            singer:  data[i].singer,
+            src: data[i].url,
+        })
+    }
+    musicComp(musicList);
+});
 
-    {
-        name: "李雷和韩梅梅",
-        singer: "徐誉滕",
-        src: "/music/3.mp3"
-    },
-    {
-        name: "丽江小倩",
-        singer: "一瞬间",
-        src: "/music/1.mp3"
-    },
-    {
-        name: "黄昏",
-        singer: "周传雄",
-        src: "/music/2.mp3"
-    },
-    {
-        name: "一念之间",
-        singer: "张杰",
-        src: "/music/4.mp3"
-    },
-    {
-        name: "心经",
-        singer: "王菲",
-        src: "/music/heart-sutra.mp3"
-    },
-];
-musicComp(musicList);

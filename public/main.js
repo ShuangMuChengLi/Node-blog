@@ -6,7 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './css/base.less';
 import App from './App.vue'
 import router from './router'
-
+require("music-comp/css/index.css");
 Vue.use(Element)
 Vue.config.productionTip = false
 

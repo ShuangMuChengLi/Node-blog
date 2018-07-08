@@ -13,7 +13,7 @@ switch (ENV) {
         break
     }
     case "production": {
-        fileServerHostname = "https://www.linchaoqun.com";
+        fileServerHostname = "http://www.linchaoqun.com";
         break
     }
 }

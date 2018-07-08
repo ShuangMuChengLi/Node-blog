@@ -21,6 +21,7 @@
 
 <script>
     import axios from "axios";
+    import store from "html5-storage";
     export default {
         data() {
             return {
@@ -44,6 +45,8 @@
         },
         mounted() {
             this.initStyle();
+            this.ruleForm.username = store.getLocalStorage("username")  ?  store.getLocalStorage("username") + "" : "";
+            this.ruleForm.password = store.getLocalStorage("password") ?  store.getLocalStorage("password") + "" : "";
             window.addEventListener("resize",this.initStyle);
         },
         methods: {
@@ -64,6 +67,8 @@
                         });
                         if(result && result.data ){
                             if(result.data.status === 200){
+                                store.setLocalStorage("username",this.ruleForm.username);
+                                store.setLocalStorage("password",this.ruleForm.password);
                                 window.location.href = "/cms.html?token=" + result.data.token;
                             }else{
                                 this.$message({

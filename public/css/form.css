@@ -1,0 +1,11 @@
+.editor {
+  margin-left: 100px;
+}
+.cms-submit {
+  text-align: right;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.cms-submit button {
+  margin-left: 20px;
+}

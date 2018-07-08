@@ -13,7 +13,7 @@ const log4js = require("../service/log4js-service");
 module.exports = function (routeReq, routeRes, next) {
     if (routeReq.query.action === "config") {
         routeRes.setHeader("Content-Type", "application/json");
-        routeRes.redirect("/ueditor/nodejs/config.json");
+        routeRes.redirect("/lib/ueditor/nodejs/config.json");
     } else if (routeReq.query.action === "catchimage") {
         function factory(remoteUrl) {
             return function (callbackfirst) {
