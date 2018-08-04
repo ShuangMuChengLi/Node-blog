@@ -35,7 +35,7 @@
                     <% var keywordPath = keyword ? "/" + keyword : "" %>
                     <% if(pageInfo.prev) { %>
                     <li>
-                        <a href="/list/<%= menu %> <%= keywordPath %>/<%= pageInfo.prev %>/<%= pageInfo.pageSize %>">«</a>
+                        <a href="/list/<%= menu %><%= keywordPath %>/<%= pageInfo.prev %>/<%= pageInfo.pageSize %>">«</a>
                     </li>
                     <% } %>
                     <% if(pageInfo.pageCount > 1) { %>
@@ -43,7 +43,7 @@
                     <li>
                         <a
                             class="<%= pageInfo.now === i ? 'active' : "" %>"
-                            href="/list/<%= menu %> <%= keywordPath %>/<%= i %>/<%= pageInfo.pageSize %>">
+                            href="/list/<%= menu %><%= keywordPath %>/<%= i %>/<%= pageInfo.pageSize %>">
                             <%= i %>
                         </a>
                     </li>
@@ -51,7 +51,7 @@
                     <% } %>
                     <% if(pageInfo.next) { %>
                     <li>
-                        <a href="/list/<%= menu %> <%= keywordPath %>/<%= pageInfo.next %>/<%= pageInfo.pageSize %>">»</a>
+                        <a href="/list/<%= menu %><%= keywordPath %>/<%= pageInfo.next %>/<%= pageInfo.pageSize %>">»</a>
                     </li>
                     <% } %>
                 </ul>

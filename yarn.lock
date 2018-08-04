@@ -5189,8 +5189,8 @@ multicast-dns@^6.0.1:
     thunky "^1.0.2"
 
 music-comp@^1.0.6:
-  version "1.0.6"
-  resolved "http://registry.npm.taobao.org/music-comp/download/music-comp-1.0.6.tgz#40d10c68e726047e295a21ddc800da1052c50d58"
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/music-comp/-/music-comp-1.0.10.tgz#7446c4027f99a7accacd1ed44b84289709cf4c5b"
 
 mysql@^2.15.0:
   version "2.15.0"
