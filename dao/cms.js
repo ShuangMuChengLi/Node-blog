@@ -18,13 +18,13 @@ exports.selectList = function (arg) {
         if (arg) {
             if(menu){
                 if (menu === "index") {
-                    sSql = "SELECT id,title,keyword,description,date,menu,isIndex FROM  cms where isindex=1 and del!=1 and (title like '%" + keyword + "%' or description like '%\" + keyword + \"%')  ORDER BY date DESC,isindex DESC limit ?,?";
+                    sSql = "SELECT * FROM  cms where isindex=1 and del!=1 and (title like '%" + keyword + "%' or description like '%\" + keyword + \"%')  ORDER BY isTop DESC, isIndex DESC, rank ASC ,date DESC,isindex DESC limit ?,?";
                     selectArg = [begin, count];
                 } else if(menu !== "search" && menu !== "all"){
-                    sSql = "SELECT id,title,keyword,description,date,menu,isIndex FROM  cms where del!=1 and menu=? and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY date DESC ,isindex DESC limit ?,?";
+                    sSql = "SELECT * FROM  cms where del!=1 and menu=? and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY isTop DESC, isIndex DESC,rank ASC ,date DESC ,isindex DESC limit ?,?";
                     selectArg = [menu, begin, count];
                 }else{
-                    sSql = "SELECT id,title,keyword,description,date,menu,isIndex FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY date DESC,isindex DESC limit ?,?";
+                    sSql = "SELECT * FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY isTop DESC, isIndex DESC,rank ASC ,date DESC,isindex DESC limit ?,?";
                     selectArg = [begin, count];
                 }
             }
@@ -188,6 +188,108 @@ exports.updateContent = function (arg) {
             connection.query(
                 "UPDATE cms SET  title=?,keyword=?,description=?,content=?,menu=?,isindex=? WHERE id=?",
                 [arg.title,arg.keyword,arg.description,arg.content,arg.menu,arg.isindex,arg.id],
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(arg.id);
+                }
+            );
+        });
+    });
+    return promise;
+};
+/**
+ *
+ * @param arg
+ * arg = {
+ *          id:"",
+            isindex : "1"
+        };
+ * @returns {Promise}
+ */
+exports.setIndex = function (arg) {
+    let promise = new Promise((resolve, reject) => {
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
+            }
+            connection.query(
+                "UPDATE cms SET  isindex=? WHERE id=?",
+                [arg.isindex,arg.id],
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(arg.id);
+                }
+            );
+        });
+    });
+    return promise;
+};
+/**
+ *
+ * @param arg
+ * arg = {
+ *          id:"",
+            rank : 1
+        };
+ * @returns {Promise}
+ */
+exports.setRank = function (arg) {
+    let promise = new Promise((resolve, reject) => {
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
+            }
+            connection.query(
+                "UPDATE cms SET  rank=? WHERE id=?",
+                [arg.rank,arg.id],
+                function (err, rows) {
+                    connection.release();
+                    if (err) {
+                        log.error(err);
+                        reject(err);
+                        return;
+                    }
+                    resolve(arg.id);
+                }
+            );
+        });
+    });
+    return promise;
+};
+/**
+ *
+ * @param arg
+ * arg = {
+ *          id:"",
+            rank : 1
+        };
+ * @returns {Promise}
+ */
+exports.setTop = function (arg) {
+    let promise = new Promise((resolve, reject) => {
+        db.getConnection(function (err, connection) {
+            if (err) {
+                log.error(err);
+                reject(err);
+                return;
+            }
+            connection.query(
+                "UPDATE cms SET  isTop=? WHERE id=?",
+                [arg.isTop,arg.id],
                 function (err, rows) {
                     connection.release();
                     if (err) {

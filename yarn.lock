@@ -4021,6 +4021,10 @@ humanize-ms@^1.2.0:
   dependencies:
     ms "^2.0.0"
 
+hyh-http@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hyh-http/-/hyh-http-1.0.0.tgz#ccb175ad47558eca9f6064d05b6e28cbe6a635e2"
+
 iconv-lite@0.4.15:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"

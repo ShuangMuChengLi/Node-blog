@@ -22,30 +22,43 @@
                     :data="list">
                     <el-table-column
                         prop="title"
-                        label="标题"
-                        width="500">
+                        label="标题">
                     </el-table-column>
                     <el-table-column
+                        width="200"
                         label="类型">
                         <template slot-scope="scope">
                             {{getType(scope.row.menu)}}
                         </template>
                     </el-table-column>
                     <el-table-column
+
+                        width="200"
                         label="是否首页">
                         <template slot-scope="scope">
                             {{scope.row.isIndex === "1"?"是":"否"}}
                         </template>
                     </el-table-column>
-                    <el-table-column label="操作">
+                    <el-table-column label="操作"
+                                     width="500">
                         <template slot-scope="scope">
+
                             <el-button
                                 size="mini"
-                                @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                                @click.stop="handleEdit(scope.$index, scope.row)">编辑</el-button>
                             <el-button
                                 size="mini"
                                 type="danger"
-                                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                                @click.stop="handleDelete(scope.$index, scope.row)">删除</el-button>
+                            <el-button
+                                size="mini"
+                                @click.stop="setTop(scope.$index, scope.row)">{{scope.row.isTop ?'取消置顶':'置顶'}}</el-button>
+                            <el-button
+                                size="mini"
+                                @click.stop="setRank(scope.row.id)">排序</el-button>
+                            <el-button
+                                size="mini"
+                                @click.stop="setIndex(scope.$index, scope.row)">{{scope.row.isindex === '1' ?'取消首页':'首页'}}</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -53,9 +66,12 @@
                     <el-pagination
                         class="pagination"
                         background
-                        layout="prev, pager, next"
+                        layout="total, sizes, prev, pager, next"
                         @current-change="pageChange"
+                        :page-sizes="[5, 10, 20, 50]"
+                        @size-change="handleSizeChange"
                         :current-page="pageInfo.now"
+                        :page-size="pageInfo.pageSize"
                         :page-count="pageInfo.pageCount">
                     </el-pagination>
                 </div>
@@ -154,6 +170,67 @@
                     });
                 });
             },
+            async setTop(index , row){
+                await axios.post('/cmsForm/setTop',{id:row.id ,isTop: row.isTop ? 0 : 1}).then(response => {
+                    if(response.data.status && response.data.status === 200){
+                        this.$message({
+                            message: '恭喜你，成功',
+                            type: 'success',
+                            duration: 1000,
+                            onClose:()=>{
+                                this.init();
+                            }
+                        });
+                    }else{
+                        this.$message.error(response.data.msg);
+                    }
+                }, response => {
+                    this.$message.error(response.data.msg);
+                });
+            },
+            async setRank( id ){
+                this.$prompt('请输入排序', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消'
+                }).then(async({ value }) => {
+                    await axios.post('/cmsForm/setRank',{id:id ,rank: value}).then(response => {
+                        if(response.data.status && response.data.status === 200){
+                            this.$message({
+                                message: '恭喜你，成功',
+                                type: 'success',
+                                duration: 1000,
+                                onClose:()=>{
+                                    this.init();
+                                }
+                            });
+                        }else{
+                            this.$message.error(response.data.msg);
+                        }
+                    }, response => {
+                        this.$message.error(response.data.msg);
+                    });
+                }).catch(() => {
+                });
+
+            },
+            async setIndex(index , row){
+                await axios.post('/cmsForm/setIndex',{id:row.id ,isindex: row.isindex === "1" ? "0" : "1"}).then(response => {
+                    if(response.data.status && response.data.status === 200){
+                        this.$message({
+                            message: '恭喜你，成功',
+                            type: 'success',
+                            duration: 1000,
+                            onClose:()=>{
+                                this.init();
+                            }
+                        });
+                    }else{
+                        this.$message.error(response.data.msg);
+                    }
+                }, response => {
+                    this.$message.error(response.data.msg);
+                });
+            },
             async init(){
                 let list = await this.getMenu();
                 if(list){
@@ -183,9 +260,14 @@
                     return false;
                 });
                 if(list){
-                    this.list = list.list;
-                    this.pageInfo = list.pageInfo;
-                    return list;
+                    if(list.status){
+                        console.error(list);
+                    }else{
+                        this.list = list.list;
+                        list.pageInfo.pageSize = parseInt(list.pageInfo.pageSize);
+                        this.pageInfo = list.pageInfo;
+                        return list;
+                    }
                 }else{
                     return false;
                 }
@@ -229,6 +311,11 @@
             },
             async del(item){
 
+            },
+            handleSizeChange(val) {
+                this.pageInfo.now = 1;
+                this.pageInfo.pageSize = parseInt(val);
+                this.getList();
             },
         }
     }
