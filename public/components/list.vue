@@ -58,7 +58,7 @@
                                 @click.stop="setRank(scope.row.id)">排序</el-button>
                             <el-button
                                 size="mini"
-                                @click.stop="setIndex(scope.$index, scope.row)">{{scope.row.isindex === '1' ?'取消首页':'首页'}}</el-button>
+                                @click.stop="setIndex(scope.$index, scope.row)">{{scope.row.isindex?'取消首页':'首页'}}</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -153,7 +153,7 @@
                                 type: 'success',
                                 duration: 1000,
                                 onClose:()=>{
-                                    this.init();
+                                    this.getList();
                                 }
                             });
                         }else{
@@ -178,7 +178,7 @@
                             type: 'success',
                             duration: 1000,
                             onClose:()=>{
-                                this.init();
+                                this.getList();
                             }
                         });
                     }else{
@@ -200,7 +200,7 @@
                                 type: 'success',
                                 duration: 1000,
                                 onClose:()=>{
-                                    this.init();
+                                    this.getList();
                                 }
                             });
                         }else{
@@ -214,14 +214,14 @@
 
             },
             async setIndex(index , row){
-                await axios.post('/cmsForm/setIndex',{id:row.id ,isindex: row.isindex === "1" ? "0" : "1"}).then(response => {
+                await axios.post('/cmsForm/setIndex',{id:row.id ,isindex: row.isindex? 0 : 1}).then(response => {
                     if(response.data.status && response.data.status === 200){
                         this.$message({
                             message: '恭喜你，成功',
                             type: 'success',
                             duration: 1000,
                             onClose:()=>{
-                                this.init();
+                                this.getList();
                             }
                         });
                     }else{

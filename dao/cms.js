@@ -11,20 +11,20 @@ exports.selectList = function (arg) {
     let promise = new Promise((resolve, reject) => {
         let sSql = "";
         let selectArg = [];
-        let begin = arg.begin ? parseInt(arg.begin) - 1 : 0;
+        let begin = arg.begin ? parseInt(arg.begin) : 0;
         let count = arg.count ? parseInt(arg.count) : 10;
         let menu = arg.menu;
         let keyword = arg.keyword;
         if (arg) {
             if(menu){
                 if (menu === "index") {
-                    sSql = "SELECT * FROM  cms where isindex=1 and del!=1 and (title like '%" + keyword + "%' or description like '%\" + keyword + \"%')  ORDER BY isTop DESC, isIndex DESC, rank ASC ,date DESC,isindex DESC limit ?,?";
+                    sSql = "SELECT * FROM  cms where isindex=1 and del!=1 and (title like '%" + keyword + "%' or description like '%\" + keyword + \"%')  ORDER BY isTop DESC, isIndex DESC, rank ASC ,date DESC limit ?,?";
                     selectArg = [begin, count];
                 } else if(menu !== "search" && menu !== "all"){
-                    sSql = "SELECT * FROM  cms where del!=1 and menu=? and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY isTop DESC, isIndex DESC,rank ASC ,date DESC ,isindex DESC limit ?,?";
+                    sSql = "SELECT * FROM  cms where del!=1 and menu=? and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY isTop DESC, isIndex DESC,rank ASC ,date DESC  limit ?,?";
                     selectArg = [menu, begin, count];
                 }else{
-                    sSql = "SELECT * FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY isTop DESC, isIndex DESC,rank ASC ,date DESC,isindex DESC limit ?,?";
+                    sSql = "SELECT * FROM  cms where del!=1 and (title like '%" + keyword + "%' or description like '%" + keyword + "%') ORDER BY isTop DESC, isIndex DESC,rank ASC ,date DESC limit ?,?";
                     selectArg = [begin, count];
                 }
             }

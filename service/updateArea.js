@@ -10,7 +10,7 @@ async function main() {
     let count = 0;
     async function requireArea(ip) {
         count++;
-        if(count < 5 && cursor < total - 1){
+        if(count < 100 && cursor < total - 1){
             cursor++;
             requireArea(result[cursor].ip)
         }
