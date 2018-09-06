@@ -36,7 +36,7 @@
                         width="200"
                         label="是否首页">
                         <template slot-scope="scope">
-                            {{scope.row.isIndex === "1"?"是":"否"}}
+                            {{scope.row.isindex === 1?"是":"否"}}
                         </template>
                     </el-table-column>
                     <el-table-column label="操作"

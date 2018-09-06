@@ -224,14 +224,16 @@ ul.pagination li a:hover:not(.active) {
   color: #333;
   margin-bottom: 150px;
 }
+.content-article img {
+  max-width: 80%;
+}
 pre {
   display: block;
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
   line-height: 1.42857143;
-  word-break: break-all;
-  word-wrap: break-word;
+  overflow-x: auto;
   color: #333;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
@@ -330,9 +332,53 @@ a.toolbar-btn {
   border: 1px solid #ccc;
   padding: 20px;
 }
+.toolbar-btn,
+a.toolbar-btn {
+  height: 26px;
+  border-radius: 3px;
+  line-height: 26px;
+  display: inline-block;
+  padding: 0 8px;
+  font-size: 12px;
+  color: #fff;
+  vertical-align: middle;
+  margin: 12px 20px 0 0;
+}
+.dialog-btn {
+  height: 26px;
+  border-radius: 3px;
+  line-height: 26px;
+  display: inline-block;
+  padding: 0 8px;
+  font-size: 12px;
+  color: #fff;
+  vertical-align: middle;
+  margin: 12px 20px 0 0;
+  box-sizing: border-box;
+  padding: 0 27px;
+}
+.dialog-btn:hover,
+.toolbar-btn:hover {
+  color: #fff;
+}
+.green-btn {
+  background-color: #46a549;
+}
+.orange-btn {
+  background-color: #fe7800;
+}
+.red-btn {
+  background-color: #f33b18;
+}
+.yellow-btn {
+  background-color: #46a549;
+}
+.gray-btn {
+  background-color: #aaaaaa;
+}
 .cms-submit {
-  margin: 20px;
-  float: right;
+  margin: 20px 20px 0;
+  text-align: right;
 }
 .editor {
   margin-left: 100px;

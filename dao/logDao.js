@@ -108,7 +108,7 @@ exports.selectViewIP = function () {
                 return;
             }
             connection.query(
-                "select count(`log`.`id`) AS `logTime`,`log`.`ip` AS `ip` from `log` group by `log`.`ip` order by `logTime` desc",
+                "select count(`log`.`id`) AS `logTime`,`log`.`ip` AS `ip` from `log` where org='' group by `log`.`ip` order by `logTime` desc limit 0,1",
                 function (err, rows) {
                     connection.release();
                     if (err) {

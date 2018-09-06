@@ -6,6 +6,9 @@
   color: #333;
   margin-bottom: 150px;
 }
+.content-article img {
+  max-width: 80%;
+}
 pre {
   display: block;
   padding: 9.5px;
