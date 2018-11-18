@@ -5,7 +5,6 @@ const ROOT_PATH = path.resolve(__dirname, "public");
 const TEM_PATH = path.resolve(ROOT_PATH, "html");
 const APP_PATH = path.resolve(ROOT_PATH, "js");
 module.exports = {
-
     entry: {
         main: [ROOT_PATH + "/main.js"],
         login: [ROOT_PATH + "/login.js"],

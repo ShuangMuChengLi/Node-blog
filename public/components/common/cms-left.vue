@@ -10,8 +10,8 @@
             <el-menu-item index="/music" @click="goto('/music')">
                 <i class="el-icon-service"></i>
             </el-menu-item>
-            <el-menu-item index="3">
-                <i class="el-icon-setting"></i>
+            <el-menu-item index="/bill" @click="goto('/bill')">
+                <i class="el-icon-document"></i>
             </el-menu-item>
         </el-menu>
     </div>

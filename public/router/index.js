@@ -17,6 +17,10 @@ export default new Router({
             component: () => import('../components/list.vue')
         },
         {
+            path: '/bill',
+            component: () => import('../components/bill.vue')
+        },
+        {
             path: '/music',
             component: () => import('../components/music.vue')
         },

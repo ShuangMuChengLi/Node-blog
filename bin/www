@@ -11,9 +11,9 @@ let debug = require("debug")("blog:server");
 let http = require("http");
 let https = require("https");
 const log4js = require("../service/log4js-service");
-/**
- * Get port from environment and store in Express.
- */
+// /**
+//  * Get port from environment and store in Express.
+//  */
 var options = {
     key  : fs.readFileSync('./cert/214593159680478.key'),
     cert : fs.readFileSync('./cert/214593159680478.pem')

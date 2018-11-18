@@ -91,6 +91,9 @@ pre {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+.red {
+  color: red;
+}
 .el-menu-vertical-demo {
   overflow: auto;
   height: 100%;
