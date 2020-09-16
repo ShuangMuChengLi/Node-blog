@@ -8,18 +8,18 @@
 //     password: "xxx",
 //     database: "blog"
 // });
-let mysql = require("mysql");
-module.exports =  mysql.createPool({
-    host:     "localhost",
-    user:     "root",
-    password: "g7845120",
-    database: "blog"
-});
-
 // let mysql = require("mysql");
 // module.exports =  mysql.createPool({
-//     host:     "www.linchaoqun.com",
+//     host:     "localhost",
 //     user:     "root",
 //     password: "g7845120",
 //     database: "blog"
 // });
+
+let mysql = require("mysql");
+module.exports =  mysql.createPool({
+    host:     "www.linchaoqun.com",
+    user:     "root",
+    password: "g7845120",
+    database: "blog"
+});

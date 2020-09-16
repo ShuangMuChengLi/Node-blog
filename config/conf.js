@@ -5,7 +5,7 @@ let pageHost = "";
 let fileServerHostname = null;
 switch (ENV) {
     case "dev": {
-        fileServerHostname = "http://localhost";
+        fileServerHostname = "http://www.linchaoqun.com";
         break
     }
     case "watch": {

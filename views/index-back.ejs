@@ -18,15 +18,9 @@
                 <ul class="list-ul">
                     <% list.forEach(function(row){ %>
                     <li class="list-li">
-                        <h2 class="list-h2" style="position: relative;">
-                            <a href="/html/cms/content.jsp?menu=<%= menu %>&id=<%= row.id %>" style="width: 80%;display: inline-block;">
+                        <h2 class="list-h2">
+                            <a href="/html/cms/content.jsp?menu=<%= menu %>&id=<%= row.id %>">
                                 <i class="icon-link"></i> <%- row.title %> </a>
-                            <div style="
-                                position: absolute;
-                                top: 0;
-                                right: 0;
-                                color:#96b97d;
-                            "><%- row.date && row.date.substring(0,10) %></div>
                         </h2>
                         <div class="list-info clearfix">
                             <p class="list-p">
