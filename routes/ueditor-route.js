@@ -80,7 +80,7 @@ module.exports = function (routeReq, routeRes, next) {
                             "Content-Length": Buffer.byteLength(sPostData)
                         }
                     };
-                    let req = http.request(options, (res) => {
+                    let req = https.request(options, (res) => {
                         res.setEncoding("utf8");
                         let aResData = [];
                         res.on("data", (chunk) => {
@@ -163,7 +163,7 @@ module.exports = function (routeReq, routeRes, next) {
                     "Content-Length": Buffer.byteLength(sPostData)
                 }
             };
-            let req = http.request(options, (res) => {
+            let req = https.request(options, (res) => {
                 res.setEncoding("utf8");
                 let aResData = [];
                 res.on("data", (chunk) => {

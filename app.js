@@ -120,7 +120,7 @@ app.use("/user", user);
 app.use("/", index);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    if (req.headers.accept.match("image")) {
+    if (req.headers.accept && req.headers.accept.match("image")) {
         next();
         return;
     }

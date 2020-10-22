@@ -15,8 +15,8 @@ const log4js = require("../service/log4js-service");
 //  * Get port from environment and store in Express.
 //  */
 var options = {
-    key  : fs.readFileSync('./cert/214593159680478.key'),
-    cert : fs.readFileSync('./cert/214593159680478.pem')
+    key  : fs.readFileSync('./cert/1.key'),
+    cert : fs.readFileSync('./cert/1.pem')
 }
 let port = normalizePort(process.env.PORT || "443");
 app.set("port", port);

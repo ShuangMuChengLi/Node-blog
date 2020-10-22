@@ -5,7 +5,7 @@ let formidable = require("formidable");
 let qs = require("querystring");//解析参数的库
 let express = require("express");
 let fs = require("fs");
-let http=require("http");
+let https=require("https");
 let conf = require("../config/conf");
 let router = express.Router();
 /* GET users listing. */
@@ -33,7 +33,7 @@ router.post("/", function(routeReq, routeRes, next) {
                 }
             };
 
-            let req = http.request(options, (res) => {
+            let req = https.request(options, (res) => {
                 res.setEncoding("utf8");
                 let aResData = [];
                 res.on("data", (chunk) => {

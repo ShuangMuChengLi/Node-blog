@@ -1,19 +1,19 @@
 const fileServerPort = "6003";// 文件服务器
-const fileServerIp = "localhost"; // 文件服务器IP
+const fileServerIp = "www.linchaoqun.com"; // 文件服务器IP
 let ENV = require("./env") ;
 let pageHost = "";
 let fileServerHostname = null;
 switch (ENV) {
     case "dev": {
-        fileServerHostname = "http://www.linchaoqun.com";
+        fileServerHostname = "https://www.linchaoqun.com";
         break
     }
     case "watch": {
-        fileServerHostname = "http://localhost";
+        fileServerHostname = "https://localhost";
         break
     }
     case "production": {
-        fileServerHostname = "http://www.linchaoqun.com";
+        fileServerHostname = "https://www.linchaoqun.com";
         break
     }
 }
